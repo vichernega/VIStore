@@ -54,10 +54,6 @@ class MainActivity : AppCompatActivity() {
         view.setSystemUiVisibility(view.getSystemUiVisibility() or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
         // white background color
         window.statusBarColor = this.resources.getColor(R.color.white)
-
-        // White ICONS
-        /*val view: View = window.decorView
-           view.setSystemUiVisibility(view.getSystemUiVisibility() and View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR.inv())*/
     }
 
 }
