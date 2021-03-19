@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "657484747339",
+    "project_id": "vi-store-e0b65",
+    "storage_bucket": "vi-store-e0b65.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:657484747339:android:94aa85e14682cf836f33ce",
+        "android_client_info": {
+          "package_name": "com.example.vistore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "657484747339-c10rfm1m0g1b2p4feit3slf42a6sda0d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vistore",
+            "certificate_hash": "0976dde6a870f76aa11cb07ad1206e381e60ccd1"
+          }
+        },
+        {
+          "client_id": "657484747339-u0hl3p5j88mbl3nh89f7ieontp8cdage.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAinuX8HBNWLMQ1PUKw-pdU7t6gPhyndkM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "657484747339-u0hl3p5j88mbl3nh89f7ieontp8cdage.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

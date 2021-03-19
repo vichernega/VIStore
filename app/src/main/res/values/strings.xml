@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">VI Store</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- REGISTRATION -->
+    <string name="no_account">You don\'t have an account.</string>
+    <string name="or">or</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="log_in">Log in</string>
+</resources>
