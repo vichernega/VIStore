@@ -11,10 +11,14 @@
     <!-- MY COLORS -->
     <color name="colorPrimary">#E0AFA0</color>      <!--Melon-->
     <color name="colorWhite">#F4F3EE</color>        <!--Alabaster-->
-    <color name="colorLightText">#8A817C</color>    <!--Middle Grey-->
-    <color name="colorBrownText">#68605B</color>
-    <color name="colorDarkText">#463F3A</color>     <!--Dark Lava-->
     <color name="colorLightBrown">#8A817C</color>    <!--Middle Grey-->
     <color name="colorBrown">#68605B</color>
     <color name="colorDarkBrown">#463F3A</color>     <!--Dark Lava-->
+    <color name="colorLightSilver">#C3C0B9</color>   <!--for edit text hints-->
+    <color name="colorRed">#E00000</color>
+
+    <!--<color name="colorLightBrown">#8A817C</color>    &lt;!&ndash;Middle Grey&ndash;&gt;
+    <color name="colorBrown">#68605B</color>
+    <color name="colorDarkBrown">#463F3A</color>     &lt;!&ndash;Dark Lava&ndash;&gt;-->
+
 </resources>

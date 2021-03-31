@@ -20,20 +20,103 @@
     <style name="ClassicButton" >
         <item name="android:fontFamily">@font/century_gothic</item>
         <item name="cornerRadius">40dp</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">@dimen/buttonTextSize</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:layout_width">250dp</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <!--ICONS-->
+
+    <style name="IconSmall">
+        <item name="android:layout_width">@dimen/iconSize</item>
+        <item name="android:layout_height">@dimen/iconSize</item>
+        <item name="android:layout_marginTop">@dimen/small_margin</item>
+        <item name="android:layout_marginStart">@dimen/large_margin</item>
+    </style>
+
 
     <!-- TEXT STYLES-->
 
     <style name="NormalText">
-        <item name="android:textColor">@color/colorBrownText</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorBrown</item>
+        <item name="android:textSize">@dimen/normalText</item>
         <item name="android:fontFamily">@font/century_gothic</item>
     </style>
+
+    <style name="NormalTextInContainer">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/normal_margin</item>
+        <item name="android:layout_marginStart">@dimen/small_margin</item>
+        <item name="android:textColor">@color/colorBrown</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/century_gothic</item>
+    </style>
+
+    <style name="HeadingText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorBrown</item>
+        <item name="android:textSize">@dimen/headingText</item>
+        <item name="android:fontFamily">@font/century_gothic</item>
+
+    </style>
+
+    <style name="RegisterNormalText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/century_gothic</item>
+    </style>
+
+    <style name="RegisterHeadingText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:fontFamily">@font/century_gothic</item>
+    </style>
+
+    <style name="RegisterEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:layout_marginStart">@dimen/large_margin</item>
+        <item name="android:layout_marginEnd">@dimen/large_margin</item>
+        <item name="android:textColorHint">@color/colorLightSilver</item>
+        <item name="android:backgroundTint">@color/colorLightSilver</item>
+        <item name="android:textSize">@dimen/normalText</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:layout_marginTop">15dp</item>
+    </style>
+
+    <style name="ErrorText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/small_margin</item>
+        <item name="android:textColor">@color/colorRed</item>
+        <item name="android:textSize">@dimen/normalText</item>
+        <item name="android:fontFamily">@font/century_gothic</item>
+    </style>
+
+
+
+    <!--SEPARATOR-->
+
+    <style name="Separator">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/separator_height</item>
+        <item name="android:background">@color/colorLightBrown</item>
+        <item name="android:layout_marginStart">@dimen/normal_margin</item>
+        <item name="android:layout_marginEnd">@dimen/normal_margin</item>
+    </style>
+
+
 
 </resources>

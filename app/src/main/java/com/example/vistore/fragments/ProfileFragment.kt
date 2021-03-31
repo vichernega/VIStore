@@ -1,27 +1,60 @@
 package com.example.vistore.fragments
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.vistore.R
-import com.example.vistore.actvities.RegisterActivity
-import com.example.vistore.databinding.FragmentEmptyUserProfileBinding
 import com.example.vistore.databinding.FragmentProfileBinding
-import com.example.vistore.utilits.replaceActivity
+import com.example.vistore.objects.User
 import com.example.vistore.utilits.replaceFragment
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 
-class ProfileFragment() : Fragment(R.layout.fragment_profile) {
+class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private lateinit var binding: FragmentProfileBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = FragmentProfileBinding.inflate(layoutInflater)
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = FragmentProfileBinding.inflate(layoutInflater, container, false)
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setOnClickListeners()
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        showUserData()
     }
 
 
+    private fun setOnClickListeners() {
 
+        //on personal information click
+        binding.personalInformationContainer.setOnClickListener { /*replaceFragment(ChangeUserInfo())*/ }
+
+        //on orders click
+        binding.ordersContainer.setOnClickListener { /*replaceFragment(ShowOrders())*/ }
+
+        //on Log Out click
+        binding.logoutContainer.setOnClickListener {
+            Firebase.auth.signOut()
+            User.clear()
+            replaceFragment(EmptyUserProfileFragment())
+        }
+    }
+
+    // show user data in fragment Text Views (name + surname, email)
+    fun showUserData(){
+        binding.tvUserFullname.text = User.name + " " + User.surname
+        binding.tvUserEmail.text = User.email
+    }
 }

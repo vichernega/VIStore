@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--TEXT SIZE-->
+
+    <dimen name="normalText">16sp</dimen>
+    <dimen name="buttonTextSize">24sp</dimen>
+    <dimen name="headingText">28sp</dimen>
+
+    <!--ICON SIZE-->
+
+    <dimen name="iconSize">26dp</dimen>
+    <dimen name="separator_height">0.5dp</dimen>
+
+
+    <!--MARGINS-->
+
+    <dimen name="normal_margin">16dp</dimen>
+    <dimen name="small_margin">13dp</dimen>
+    <dimen name="large_margin">28dp</dimen>
+    <dimen name="small_container_height">55dp</dimen>
+    <dimen name="after_heading_margin">40dp</dimen>
+
+
+</resources>

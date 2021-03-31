@@ -24,13 +24,15 @@ fun AppCompatActivity.replaceFragment(fragment: Fragment){
         .commit()
 }
 
-fun showToast(str: String){
-    Toast.makeText(APP_ACTIVITY, str, Toast.LENGTH_SHORT).show()
-}
-
 fun AppCompatActivity.replaceActivity(activity: AppCompatActivity){
     val intent = Intent(this, activity::class.java)
     startActivity(intent)
     this.finish()
 }
+
+fun showToast(str: String){
+    Toast.makeText(APP_ACTIVITY, str, Toast.LENGTH_SHORT).show()
+}
+
+
 

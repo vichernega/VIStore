@@ -3,16 +3,91 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/register_activity_gradient"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.SignUpFragment">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SIGN UP"
-        android:textSize="30dp"
+        android:id="@+id/tv_sign_up"
+        style="@style/RegisterHeadingText"
+        android:text="@string/sign_up"
+        android:layout_marginTop="180dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!--USER DATA-->
+
+    <EditText
+        style="@style/RegisterEditText"
+        android:id="@+id/et_sign_up_name"
+        android:hint="@string/name"
+        android:layout_marginTop="@dimen/after_heading_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_sign_up"/>
+    <EditText
+        style="@style/RegisterEditText"
+        android:id="@+id/et_sign_up_surname"
+        android:hint="@string/surname"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_sign_up_name"/>
+    <EditText
+        style="@style/RegisterEditText"
+        android:id="@+id/et_sign_up_email"
+        android:hint="@string/email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_sign_up_surname"/>
+    <EditText
+        style="@style/RegisterEditText"
+        android:id="@+id/et_sign_up_password"
+        android:hint="@string/password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_sign_up_email"/>
+
+    <!--Error text-->
+    <TextView
+        android:id="@+id/tv_sign_up_error_field"
+        style="@style/ErrorText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_sign_up_password"/>
+
+    <Button
+        android:id="@+id/btn_sign_up"
+        style="@style/ClassicButton"
+        android:layout_margin="80dp"
+        android:backgroundTint="@color/colorWhite"
+        android:text="@string/sign_up"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_sign_up_password" />
+
+    <TextView
+        android:id="@+id/tv_already_have_account"
+        style="@style/RegisterNormalText"
+        android:textColor="@color/colorWhite"
+        android:layout_marginStart="@dimen/after_heading_margin"
+        android:text="@string/already_have_an_account"
+        android:layout_marginBottom="@dimen/large_margin"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
+    <TextView
+        android:id="@+id/tv_log_in"
+        style="@style/RegisterNormalText"
+        android:textColor="@color/colorWhite"
+        android:text="@string/log_in_underlined"
+        android:textStyle="bold"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="@dimen/large_margin"
+        app:layout_constraintStart_toEndOf="@+id/tv_already_have_account"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
