@@ -4,6 +4,7 @@
     <!--TEXT SIZE-->
 
     <dimen name="normalText">16sp</dimen>
+    <dimen name="middleSizeText">18sp</dimen>
     <dimen name="buttonTextSize">24sp</dimen>
     <dimen name="headingText">28sp</dimen>
 
@@ -16,10 +17,14 @@
     <!--MARGINS-->
 
     <dimen name="normal_margin">16dp</dimen>
+    <dimen name="middle_margin">20dp</dimen>
     <dimen name="small_margin">13dp</dimen>
     <dimen name="large_margin">28dp</dimen>
+    <dimen name="larger_margin">37dp</dimen>
     <dimen name="small_container_height">55dp</dimen>
     <dimen name="after_heading_margin">40dp</dimen>
+    <dimen name="after_heading_large_margin">55dp</dimen>
+
 
 
 </resources>

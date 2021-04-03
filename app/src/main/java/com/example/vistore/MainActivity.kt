@@ -9,6 +9,7 @@ import com.example.vistore.objects.FirebaseObject
 import com.example.vistore.objects.User
 import com.example.vistore.utilits.APP_ACTIVITY
 import com.example.vistore.utilits.replaceFragment
+import com.example.vistore.utilits.replaceFragmentWithNoBackStack
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         User.checkUser()    // if user !null --> retrieve remote data
 
         setStatusBarParams()
+        replaceFragmentWithNoBackStack(HomeFragment())
     }
 
     override fun onStart() {
@@ -56,6 +58,13 @@ class MainActivity : AppCompatActivity() {
         view.setSystemUiVisibility(view.getSystemUiVisibility() or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
         // white background color
         window.statusBarColor = this.resources.getColor(R.color.white)
+    }
+
+    fun hideBottomNavBar(){
+        binding.bottomNavBar.visibility = View.GONE
+    }
+    fun showBottomNavBar(){
+        binding.bottomNavBar.visibility = View.VISIBLE
     }
 
 }

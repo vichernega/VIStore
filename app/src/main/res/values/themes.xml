@@ -43,7 +43,7 @@
     <style name="NormalText">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/colorBrown</item>
+        <item name="android:textColor">@color/colorDarkBrown</item>
         <item name="android:textSize">@dimen/normalText</item>
         <item name="android:fontFamily">@font/century_gothic</item>
     </style>
@@ -54,24 +54,53 @@
         <item name="android:layout_marginTop">@dimen/normal_margin</item>
         <item name="android:layout_marginStart">@dimen/small_margin</item>
         <item name="android:textColor">@color/colorBrown</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">@dimen/middleSizeText</item>
         <item name="android:fontFamily">@font/century_gothic</item>
+    </style>
+
+    <style name="MiddleSizeText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/larger_margin</item>
+        <item name="android:layout_marginStart">@dimen/large_margin</item>
+        <item name="android:textColor">@color/colorBrown</item>
+        <item name="android:textSize">@dimen/middleSizeText</item>
+        <item name="android:fontFamily">@font/century_gothic</item>
+
+    </style>
+
+    <style name="SmallEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:layout_marginStart">120dp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:maxLength">20</item>
+        <item name="android:layout_marginEnd">@dimen/large_margin</item>
+        <item name="android:textColorHint">@color/colorLightSilver</item>
+        <item name="fontFamily">@font/century_gothic</item>
+        <item name="android:backgroundTint">@color/colorDarkBrown</item>
+        <item name="android:textSize">@dimen/middleSizeText</item>
+        <item name="android:textColor">@color/colorDarkBrown</item>
+        <item name="android:layout_marginTop">@dimen/normal_margin</item>
     </style>
 
     <style name="HeadingText">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/colorBrown</item>
+        <item name="android:textColor">@color/colorDarkBrown</item>
         <item name="android:textSize">@dimen/headingText</item>
         <item name="android:fontFamily">@font/century_gothic</item>
 
     </style>
 
+
+
     <style name="RegisterNormalText">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/colorWhite</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">@dimen/middleSizeText</item>
         <item name="android:fontFamily">@font/century_gothic</item>
     </style>
 
@@ -87,11 +116,13 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingLeft">10dp</item>
+        <item name="android:maxLines">1</item>
         <item name="android:layout_marginStart">@dimen/large_margin</item>
         <item name="android:layout_marginEnd">@dimen/large_margin</item>
         <item name="android:textColorHint">@color/colorLightSilver</item>
         <item name="android:backgroundTint">@color/colorLightSilver</item>
         <item name="android:textSize">@dimen/normalText</item>
+        <item name="fontFamily">@font/century_gothic</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:layout_marginTop">15dp</item>
     </style>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.ChangeUserInfoFragment">
+
+
+    <!--HEADING-->
+    <TextView
+        android:id="@+id/tv_personal_information"
+        style="@style/HeadingText"
+        android:text="@string/personal_information"
+        android:layout_marginTop="90dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <!--NAME-->
+    <TextView
+        android:id="@+id/tv_name"
+        style="@style/MiddleSizeText"
+        android:text="@string/name_colon"
+        android:layout_marginTop="@dimen/after_heading_large_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_personal_information"/>
+
+    <EditText
+        android:id="@+id/et_name"
+        style="@style/SmallEditText"
+        android:layout_marginTop="45dp"
+        tools:text="Victoria"
+        android:hint="@string/name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_personal_information"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <!--SURNAME-->
+    <TextView
+        android:id="@+id/tv_surname"
+        style="@style/MiddleSizeText"
+        android:text="@string/surname_colon"
+        android:hint="@string/surname"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <EditText
+        android:id="@+id/et_surname"
+        style="@style/SmallEditText"
+        android:hint="@string/surname"
+        app:layout_constraintTop_toBottomOf="@+id/et_name"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!--COUNTRY-->
+    <TextView
+        android:id="@+id/tv_country"
+        style="@style/MiddleSizeText"
+        android:text="@string/country_colon"
+        app:layout_constraintTop_toBottomOf="@+id/tv_surname"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <EditText
+        android:id="@+id/et_country"
+        style="@style/SmallEditText"
+        android:hint="@string/country"
+        app:layout_constraintTop_toBottomOf="@+id/et_surname"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!--TOWN-->
+    <TextView
+        android:id="@+id/tv_town"
+        style="@style/MiddleSizeText"
+        android:text="@string/town_colon"
+        app:layout_constraintTop_toBottomOf="@+id/tv_country"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <EditText
+        android:id="@+id/et_town"
+        style="@style/SmallEditText"
+        android:hint="@string/town"
+        app:layout_constraintTop_toBottomOf="@+id/et_country"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!--ADDRESS-->
+    <TextView
+        android:id="@+id/tv_address"
+        style="@style/MiddleSizeText"
+        android:text="@string/address_colon"
+        app:layout_constraintTop_toBottomOf="@+id/tv_town"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <EditText
+        android:id="@+id/et_address"
+        style="@style/SmallEditText"
+        android:hint="@string/address"
+        app:layout_constraintTop_toBottomOf="@+id/et_town"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!--BUTTON-->
+
+    <Button
+        android:id="@+id/btn_confirm"
+        style="@style/ClassicButton"
+        android:layout_marginTop="@dimen/after_heading_large_margin"
+        android:text="@string/confirm"
+        app:layout_constraintTop_toBottomOf="@+id/tv_address"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,10 +15,18 @@ import java.security.AccessController.getContext
 fun Fragment.replaceFragment(fragment: Fragment){
     fragmentManager?.beginTransaction()
         ?.replace(R.id.activity_container, fragment)
+        ?.addToBackStack(null)
         ?.commit()
 
 }
 fun AppCompatActivity.replaceFragment(fragment: Fragment){
+    supportFragmentManager.beginTransaction()
+        .replace(R.id.activity_container, fragment)
+        .addToBackStack(null)
+        .commit()
+}
+
+fun AppCompatActivity.replaceFragmentWithNoBackStack(fragment: Fragment){
     supportFragmentManager.beginTransaction()
         .replace(R.id.activity_container, fragment)
         .commit()

@@ -23,6 +23,14 @@ object User {
         this.email = email
     }
 
+    fun saveData(name: String, surname: String, country: String, town: String, address: String){
+        this.name = name
+        this.surname = surname
+        this.country = country
+        this.town = town
+        this.address = address
+    }
+
     // converting and setting remote user data in local object
     fun receiveRemoteUser(documentShapshot: DocumentSnapshot) {
         val remoteUser = documentShapshot.toObject<User>()

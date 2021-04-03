@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.example.vistore.R
 import com.example.vistore.databinding.FragmentProfileBinding
 import com.example.vistore.objects.User
+import com.example.vistore.utilits.APP_ACTIVITY
 import com.example.vistore.utilits.replaceFragment
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -27,6 +28,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         super.onViewCreated(view, savedInstanceState)
 
         setOnClickListeners()
+        APP_ACTIVITY.showBottomNavBar()
     }
 
     override fun onStart() {
@@ -39,7 +41,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private fun setOnClickListeners() {
 
         //on personal information click
-        binding.personalInformationContainer.setOnClickListener { /*replaceFragment(ChangeUserInfo())*/ }
+        binding.personalInformationContainer.setOnClickListener { replaceFragment(ChangeUserInfoFragment()) }
 
         //on orders click
         binding.ordersContainer.setOnClickListener { /*replaceFragment(ShowOrders())*/ }
