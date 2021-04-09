@@ -41,7 +41,7 @@ object User {
 
     // for retrieving user data on app launching
     fun checkUser(){
-        if (Firebase.auth.currentUser.uid != null){
+        if (Firebase.auth.currentUser != null){
             FirebaseObject.retrieveUserFromDB()
         }
     }

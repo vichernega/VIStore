@@ -3,6 +3,7 @@
 
     <!--TEXT SIZE-->
 
+    <dimen name="smallText">12sp</dimen>
     <dimen name="normalText">16sp</dimen>
     <dimen name="middleSizeText">18sp</dimen>
     <dimen name="buttonTextSize">24sp</dimen>
@@ -24,6 +25,9 @@
     <dimen name="small_container_height">55dp</dimen>
     <dimen name="after_heading_margin">40dp</dimen>
     <dimen name="after_heading_large_margin">55dp</dimen>
+
+    <dimen name="recycler_view_small_margin">4dp</dimen>
+    <dimen name="recycler_view_normal_margin">8dp</dimen>
 
 
 

@@ -1,7 +1,6 @@
 package com.example.vistore.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.vistore.R
 import com.example.vistore.databinding.FragmentLoginBinding
-import com.example.vistore.models.LoginViewModel
-import com.example.vistore.objects.FirebaseObject
+import com.example.vistore.viewmodels.LoginViewModel
 import com.example.vistore.utilits.APP_ACTIVITY
 import com.example.vistore.utilits.REGISTER_ACTIVITY
 import com.example.vistore.utilits.replaceActivity

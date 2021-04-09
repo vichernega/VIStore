@@ -9,8 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.vistore.R
 import com.example.vistore.databinding.FragmentChangeUserInfoBinding
-import com.example.vistore.models.ChangeUserInfoViewModel
-import com.example.vistore.models.SignUpViewModel
+import com.example.vistore.viewmodels.ChangeUserInfoViewModel
 import com.example.vistore.objects.User
 import com.example.vistore.utilits.APP_ACTIVITY
 import com.example.vistore.utilits.replaceFragment

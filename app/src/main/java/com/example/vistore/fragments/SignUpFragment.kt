@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.vistore.R
 import com.example.vistore.databinding.FragmentSignUpBinding
-import com.example.vistore.models.SignUpViewModel
+import com.example.vistore.viewmodels.SignUpViewModel
 import com.example.vistore.objects.User
 import com.example.vistore.utilits.APP_ACTIVITY
 import com.example.vistore.utilits.REGISTER_ACTIVITY

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.GoodFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--GOOD IMAGE-->
+        <ImageView
+            android:id="@+id/good_image"
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            android:layout_marginTop="@dimen/small_margin"
+            android:src="@drawable/default_product_image"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!--BRAND,  GOOD NAME, TYPE, PRICE-->
+        <TextView
+            android:id="@+id/tv_good_brand"
+            style="@style/MiddleSizeText"
+            tools:text="CLINIQUE"
+            app:layout_constraintTop_toBottomOf="@+id/good_image"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_good_name"
+            style="@style/MiddleSizeText"
+            tools:text="Blotted Lip"
+            android:textStyle="bold"
+            android:maxWidth="250dp"
+            android:layout_marginStart="@dimen/recycler_view_normal_margin"
+            app:layout_constraintStart_toEndOf="@+id/tv_good_brand"
+            app:layout_constraintTop_toBottomOf="@+id/good_image"/>
+
+        <TextView
+            android:id="@+id/tv_good_product_type"
+            style="@style/SmallSizeText"
+            tools:text="lipstick"
+            app:layout_constraintTop_toBottomOf="@+id/tv_good_brand"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_good_price"
+            style="@style/MiddleSizeText"
+            tools:text="5.5$"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/tv_good_product_type"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!--BUTTON ADD TO BASKET-->
+        <Button
+            android:id="@+id/btn_add_to_basket"
+            style="@style/ClassicButton"
+            android:text="@string/add_to_basket"
+            android:textSize="@dimen/middleSizeText"
+            android:layout_marginTop="@dimen/recycler_view_normal_margin"
+            app:layout_constraintTop_toBottomOf="@+id/tv_good_price"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!--BUTTON DELETE FROM BASKET-->
+        <Button
+            android:id="@+id/btn_delete_from_basket"
+            style="@style/ClassicButton"
+            android:visibility="invisible"
+            android:text="@string/delete_from_basket"
+            android:textSize="@dimen/middleSizeText"
+            android:backgroundTint="@color/colorDarkBrown"
+            android:layout_marginTop="@dimen/recycler_view_normal_margin"
+            app:layout_constraintTop_toBottomOf="@+id/tv_good_price"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_description"
+            style="@style/NormalText"
+            android:text="@string/description_colon"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginStart="@dimen/large_margin"
+            app:layout_constraintTop_toBottomOf="@+id/btn_add_to_basket"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_good_description"
+            style="@style/NormalText"
+            android:maxWidth="230dp"
+            tools:text="Blotted Lip Sheer matte lipstick that creates the perfect popsicle pout! Formula is lightweight, matte and buildable for light to medium coverage."
+            android:layout_marginStart="@dimen/recycler_view_normal_margin"
+            android:layout_marginEnd="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginBottom="@dimen/small_margin"
+            app:layout_constraintStart_toEndOf="@+id/tv_description"
+            app:layout_constraintTop_toBottomOf="@+id/btn_add_to_basket"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</ScrollView>

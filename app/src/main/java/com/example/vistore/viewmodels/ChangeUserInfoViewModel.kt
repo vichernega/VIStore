@@ -1,4 +1,4 @@
-package com.example.vistore.models
+package com.example.vistore.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

@@ -1,8 +1,10 @@
 package com.example.vistore
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.example.vistore.databinding.ActivityMainBinding
 import com.example.vistore.fragments.*
 import com.example.vistore.objects.FirebaseObject
@@ -39,11 +41,11 @@ class MainActivity : AppCompatActivity() {
         /**changing fragments by clicking on NavBar element*/
         binding.bottomNavBar.setOnNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.ic_home -> replaceFragment(HomeFragment())
-                R.id.ic_menu -> replaceFragment(MenuFragment())
-                R.id.ic_basket -> replaceFragment(BasketFragment())
-                R.id.ic_my_account -> if (Firebase.auth.currentUser != null) replaceFragment(ProfileFragment())
-                                        else replaceFragment(EmptyUserProfileFragment())
+                R.id.ic_home -> replaceFragmentWithNoBackStack(HomeFragment())
+                R.id.ic_menu -> replaceFragmentWithNoBackStack(MenuFragment())
+                R.id.ic_basket -> replaceFragmentWithNoBackStack(BasketFragment())
+                R.id.ic_my_account -> if (Firebase.auth.currentUser != null) replaceFragmentWithNoBackStack(ProfileFragment())
+                                        else replaceFragmentWithNoBackStack(EmptyUserProfileFragment())
 
             }
             true
@@ -51,6 +53,29 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    // back navigation
+    override fun onBackPressed() {
+
+        val currentFragment = supportFragmentManager.findFragmentById(R.id.activity_container)
+
+        //from HomeFragment app closes
+        if (currentFragment != null) {
+            if(binding.bottomNavBar.selectedItemId == R.id.ic_home && currentFragment is HomeFragment){
+                super.onBackPressed()
+                finish()
+            }
+            //from other main fragments user navigates to HomeFragment
+            else if (currentFragment is MenuFragment || currentFragment is BasketFragment ||
+                currentFragment is ProfileFragment || currentFragment is EmptyUserProfileFragment) {
+
+                binding.bottomNavBar.selectedItemId = R.id.ic_home
+            }
+            //from other fragments (GoodFragment / ChangeUserInfoFragment) user navigates by back stack
+            else {
+                super.onBackPressed()
+            }
+        }
+    }
     //status bar appearance
     fun setStatusBarParams(){
         //black icons color
