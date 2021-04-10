@@ -48,7 +48,7 @@ object FirebaseObject {
 
     fun saveGoodInUsersBasket(good: GoodObject){
         firestore.collection(COLLECTION_USERS).document(Firebase.auth.currentUser.uid)
-            .collection(COLLECTION_USERS_BASKET).document(GoodObject.goodId)
+            .collection(COLLECTION_USERS_BASKET).document(good.goodId)
             .set(good)
             .addOnSuccessListener {
                 Log.d("FIRESTOREdb", "GOOD IS SUCCESSFULLY SAVED IN USERS_BASKET")
@@ -60,9 +60,9 @@ object FirebaseObject {
             }
     }
 
-    fun deleteGoodFromUsersBasket(){
+    fun deleteGoodFromUsersBasket(good: GoodObject){
         firestore.collection(COLLECTION_USERS).document(Firebase.auth.currentUser.uid)
-            .collection(COLLECTION_USERS_BASKET).document(GoodObject.goodId)
+            .collection(COLLECTION_USERS_BASKET).document(good.goodId)
             .delete()
             .addOnSuccessListener {
                 Log.d("FIRESTOREdb", "GOOD SUCCESSFULLY DELETED FROM USERS_BASKET")

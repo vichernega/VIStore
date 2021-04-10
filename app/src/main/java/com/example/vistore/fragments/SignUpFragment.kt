@@ -12,10 +12,7 @@ import com.example.vistore.R
 import com.example.vistore.databinding.FragmentSignUpBinding
 import com.example.vistore.viewmodels.SignUpViewModel
 import com.example.vistore.objects.User
-import com.example.vistore.utilits.APP_ACTIVITY
-import com.example.vistore.utilits.REGISTER_ACTIVITY
-import com.example.vistore.utilits.replaceActivity
-import com.example.vistore.utilits.replaceFragment
+import com.example.vistore.utilits.*
 
 class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
 
@@ -83,7 +80,7 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
         }
 
         /**LOG IN TEXT VIEW*/
-        binding.tvLogIn.setOnClickListener{ replaceFragment(LoginFragment())}
+        binding.tvLogIn.setOnClickListener{ replaceFragmentWithNoBackStack(LoginFragment())}
     }
 
 

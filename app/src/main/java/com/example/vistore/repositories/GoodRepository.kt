@@ -1,6 +1,5 @@
 package com.example.vistore.repositories
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.vistore.objects.FirebaseObject
 import com.example.vistore.objects.GoodObject
@@ -21,7 +20,7 @@ class GoodRepository {
     }
 
     suspend fun deleteFromBasket(){
-        FirebaseObject.deleteGoodFromUsersBasket()
+        FirebaseObject.deleteGoodFromUsersBasket(GoodObject)
         checkIsGoodAlreadyInBasket()
     }
 }

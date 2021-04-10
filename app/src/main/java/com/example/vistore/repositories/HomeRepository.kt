@@ -26,7 +26,7 @@ class HomeRepository {
         // response - retrofit object that contains List<Good>
         try {
 
-            val response = ApiBuilder.retrofitService.getProducts("lipstick", headers)
+            val response = ApiBuilder.retrofitService.getProductsHome(headers)
             _responseListLivaData.value = response
 
             Log.d("RESPONSE", response.toString())

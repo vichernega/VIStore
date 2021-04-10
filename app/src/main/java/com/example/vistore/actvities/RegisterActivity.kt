@@ -1,13 +1,11 @@
 package com.example.vistore.actvities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.example.vistore.R
 import com.example.vistore.fragments.RegisterOptionsFragment
-import com.example.vistore.utilits.APP_ACTIVITY
-import com.example.vistore.utilits.REGISTER_ACTIVITY
-import com.example.vistore.utilits.replaceFragment
+import com.example.vistore.utilits.*
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -22,15 +20,22 @@ class RegisterActivity : AppCompatActivity() {
         replaceFragment(RegisterOptionsFragment())
     }
 
+    override fun onBackPressed() {
+        val currentFragment = supportFragmentManager.findFragmentById(R.id.activity_container)
+
+        if (currentFragment is RegisterOptionsFragment){
+            REGISTER_ACTIVITY.replaceActivity(APP_ACTIVITY)
+        } else {
+            super.onBackPressed()
+        }
+    }
 
     // status bar appearance
     fun setStatusBarParams(){
         //white icons color
         val view: View = window.decorView
-        view.setSystemUiVisibility(view.getSystemUiVisibility() and View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR.inv())
-        // white background color
+        view.systemUiVisibility = view.systemUiVisibility and View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        // dark background color
         window.statusBarColor = this.resources.getColor(R.color.colorDarkBrown)
-
-
     }
 }

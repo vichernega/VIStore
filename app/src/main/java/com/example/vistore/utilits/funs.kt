@@ -19,6 +19,13 @@ fun Fragment.replaceFragment(fragment: Fragment){
         ?.commit()
 
 }
+
+fun Fragment.replaceFragmentWithNoBackStack(fragment:Fragment){
+    fragmentManager?.beginTransaction()
+        ?.replace(R.id.activity_container, fragment)
+        ?.commit()
+}
+
 fun AppCompatActivity.replaceFragment(fragment: Fragment){
     supportFragmentManager.beginTransaction()
         .replace(R.id.activity_container, fragment)

@@ -9,11 +9,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.vistore.R
 import com.example.vistore.databinding.FragmentLoginBinding
+import com.example.vistore.utilits.*
 import com.example.vistore.viewmodels.LoginViewModel
-import com.example.vistore.utilits.APP_ACTIVITY
-import com.example.vistore.utilits.REGISTER_ACTIVITY
-import com.example.vistore.utilits.replaceActivity
-import com.example.vistore.utilits.showToast
 
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
@@ -56,6 +53,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                                 binding.etLogInPassword.text.toString().trim { it <= ' ' })
             }
         }
+
+        binding.tvSignUp.setOnClickListener { replaceFragmentWithNoBackStack(SignUpFragment()) }
     }
 
 

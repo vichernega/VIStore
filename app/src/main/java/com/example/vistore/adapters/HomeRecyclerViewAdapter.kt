@@ -30,11 +30,17 @@ class HomeRecyclerViewAdapter(private val productList: List<Good>) :
     }
     /**sets data from productList to components in recyclerView_item*/
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
-        holder.binding.productPhoto.load(productList[position].image_link) // using Coil to load images
-        holder.binding.tvProductBrand.text = productList[position].brand.toUpperCase()
-        holder.binding.tvProductName.text = productList[position].name
-        holder.binding.tvProductType.text = productList[position].category
-        holder.binding.tvProductPrice.text = productList[position].price + productList[position].price_sign
+
+        // nullable value check (api returns null in some cases)
+        productList[position].image_link?.let { holder.binding.productPhoto.load(it) }
+        productList[position].brand?.let { holder.binding.tvProductBrand.text = it.toUpperCase() }
+        productList[position].name?.let { holder.binding.tvProductName.text = it }
+        productList[position].category?.let { holder.binding.tvProductType.text = it }
+        if (productList[position].price_sign != null){
+                (productList[position].price + productList[position].price_sign)?.let { holder.binding.tvProductPrice.text = it }
+        } else {
+            (productList[position].price + "$")?.let { holder.binding.tvProductPrice.text = it }
+        }
 
         // click listener for item in recyclerView
         holder.binding.commonRecyclerViewItem.setOnClickListener {

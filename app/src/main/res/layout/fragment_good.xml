@@ -35,7 +35,7 @@
             style="@style/MiddleSizeText"
             tools:text="Blotted Lip"
             android:textStyle="bold"
-            android:maxWidth="250dp"
+            android:maxWidth="210dp"
             android:layout_marginStart="@dimen/recycler_view_normal_margin"
             app:layout_constraintStart_toEndOf="@+id/tv_good_brand"
             app:layout_constraintTop_toBottomOf="@+id/good_image"/>
