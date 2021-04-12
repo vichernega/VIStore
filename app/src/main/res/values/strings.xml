@@ -34,4 +34,13 @@
     <string name="add_to_basket">Add to basket</string>
     <string name="description_colon">Description:</string>
     <string name="delete_from_basket">Delete from basket</string>
+    <string name="order">Order</string>
+    <string name="total_colon">Total:</string>
+    <string name="order_information">Order information</string>
+    <string name="delivery_type_colon">Delivery type:</string>
+    <string name="delivery_man">Delivery man</string>
+    <string name="post_office">Post office</string>
+    <string name="payment_colon">Payment:</string>
+    <string name="credit_card">Credit card</string>
+    <string name="cash">Cash</string>
 </resources>

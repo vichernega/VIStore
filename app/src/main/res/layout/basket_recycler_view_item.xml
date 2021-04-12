@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/basket_recycler_view_item"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!--GOOD PHOTO-->
+    <ImageView
+        android:id="@+id/product_photo"
+        android:layout_width="100dp"
+        android:layout_height="110dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/default_product_image"
+        android:layout_margin="@dimen/small_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <!--BUTTON CLOSE-->
+    <ImageButton
+        android:id="@+id/btn_close"
+        style="@style/ImageButtonSmall"
+        android:src="@drawable/ic_close"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginEnd="@dimen/small_margin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!--GOOD NAME AND TYPE-->
+    <TextView
+        style="@style/NormalText"
+        android:id="@+id/tv_product_full_name"
+        tools:text="CLINIQUE Blotted Lipffffffffffffffffffffffffffffffffffffff fffffffffffffffff ffffffffff fffffffffffff  ffffffffffff ff"
+        android:maxWidth="210dp"
+        android:textSize="14sp"
+        android:layout_marginStart="@dimen/recycler_view_normal_margin"
+        android:layout_marginTop="@dimen/small_margin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/product_photo"/>
+
+    <TextView
+        style="@style/HomeRecyclerViewSmallLightText"
+        android:id="@+id/tv_product_type"
+        tools:text="Lipstick"
+        android:layout_marginStart="@dimen/recycler_view_normal_margin"
+        android:layout_marginTop="@dimen/recycler_view_small_margin"
+        app:layout_constraintTop_toBottomOf="@+id/tv_product_full_name"
+        app:layout_constraintStart_toEndOf="@+id/product_photo"/>
+
+    <!-- ADD / SUBTRACT GOOD BUTTONS-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/recycler_view_normal_margin"
+        android:layout_marginBottom="@dimen/small_margin"
+        app:layout_constraintStart_toEndOf="@+id/product_photo"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageButton
+            android:id="@+id/btn_minus"
+            style="@style/ImageButtonSmall"
+            android:src="@drawable/ic_minus_sign"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_good_amount"
+            style="@style/NormalText"
+            tools:text="1"
+            android:layout_marginStart="@dimen/recycler_view_normal_margin"
+            android:layout_marginEnd="@dimen/recycler_view_normal_margin"
+            app:layout_constraintStart_toEndOf="@+id/btn_minus"
+            app:layout_constraintEnd_toStartOf="@+id/btn_plus"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+        <ImageButton
+            android:id="@+id/btn_plus"
+            style="@style/ImageButtonSmall"
+            android:src="@drawable/ic_plus_sign"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--GOOD PRICE-->
+    <TextView
+        android:id="@+id/tv_good_price"
+        style="@style/NormalText"
+        tools:text="5.5$"
+        android:layout_marginEnd="@dimen/large_margin"
+        android:layout_marginBottom="@dimen/small_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

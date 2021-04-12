@@ -19,4 +19,6 @@ class HomeViewModel: ViewModel() {
     }
 
     val responseListLiveData: MutableLiveData<List<Good>> get() = _responseListLivaData
+
+
 }

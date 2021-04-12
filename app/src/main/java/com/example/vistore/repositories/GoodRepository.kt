@@ -3,6 +3,7 @@ package com.example.vistore.repositories
 import androidx.lifecycle.MutableLiveData
 import com.example.vistore.objects.FirebaseObject
 import com.example.vistore.objects.GoodObject
+import com.example.vistore.utilits.showToast
 
 class GoodRepository {
 
@@ -15,11 +16,14 @@ class GoodRepository {
     }
 
     suspend fun addToBasket(){
+        GoodObject.addOneMoreInBasket()
         FirebaseObject.saveGoodInUsersBasket(GoodObject)
+        showToast("Deleted successfully")
         checkIsGoodAlreadyInBasket()
     }
 
     suspend fun deleteFromBasket(){
+        GoodObject.deleteFromBasketTotally()
         FirebaseObject.deleteGoodFromUsersBasket(GoodObject)
         checkIsGoodAlreadyInBasket()
     }

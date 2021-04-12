@@ -35,7 +35,7 @@ class HomeRecyclerViewAdapter(private val productList: List<Good>) :
         productList[position].image_link?.let { holder.binding.productPhoto.load(it) }
         productList[position].brand?.let { holder.binding.tvProductBrand.text = it.toUpperCase() }
         productList[position].name?.let { holder.binding.tvProductName.text = it }
-        productList[position].category?.let { holder.binding.tvProductType.text = it }
+        productList[position].category?.let { holder.binding.tvProductCategory.text = it }
         if (productList[position].price_sign != null){
                 (productList[position].price + productList[position].price_sign)?.let { holder.binding.tvProductPrice.text = it }
         } else {

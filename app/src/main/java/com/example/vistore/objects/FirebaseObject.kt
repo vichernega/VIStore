@@ -52,7 +52,6 @@ object FirebaseObject {
             .set(good)
             .addOnSuccessListener {
                 Log.d("FIRESTOREdb", "GOOD IS SUCCESSFULLY SAVED IN USERS_BASKET")
-                showToast("Saved successfully!")
             }
             .addOnFailureListener {
                 Log.d("FIRESTOREdb", "FAILURE. GOOD IS NOT SAVED IN USERS_BASKET")
@@ -66,7 +65,6 @@ object FirebaseObject {
             .delete()
             .addOnSuccessListener {
                 Log.d("FIRESTOREdb", "GOOD SUCCESSFULLY DELETED FROM USERS_BASKET")
-                showToast("Deleted successfully")
             }
             .addOnFailureListener {
                 Log.d("FIRESTOREdb", "FAILURE. GOOD IS NOT DELETED FROM USERS_BASKET")
@@ -94,5 +92,43 @@ object FirebaseObject {
             }
         delay(600)
         return isGoodInBasket  // true if good is in DB
+    }
+
+    suspend fun checkIsBasketEmpty(): Boolean{
+        var isBasketEmpty = false
+        firestore.collection(COLLECTION_USERS).document(Firebase.auth.currentUser.uid)
+            .collection(COLLECTION_USERS_BASKET)
+            .get()
+            .addOnSuccessListener {
+                if(it.isEmpty) {
+                    isBasketEmpty = true
+                    Log.d("FIRESTOREdb", "BASKET IS EMPTY")
+                }
+                else{
+                    Log.d("FIRESTOREdb", "BASKET IS NOT EMPTY")
+                }
+            }
+            .addOnFailureListener {
+                Log.d("FIRESTOREdb", "FAILURE IN IS GOOD EXISTS FUN")
+            }
+        delay(600)
+        return isBasketEmpty  // true if good is in DB
+    }
+
+    suspend fun retrieveGoodListFromBasket(): MutableList<Good> {
+        var goodsList: MutableList<Good> = mutableListOf()
+        firestore.collection(COLLECTION_USERS).document(Firebase.auth.currentUser.uid)
+            .collection(COLLECTION_USERS_BASKET)
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents){
+                    goodsList.add(document.toObject(Good::class.java))
+                }
+                Log.d("FIRESTOREdb", "RETRIEVED FROM BASKET GOODS LIST: $goodsList")
+            }
+            .addOnFailureListener { Log.d("FIRESTOREdb", "FAILURE IN RETRIEVE GOODS LIST BASKET FUN") }
+        delay(600)
+        Log.d("FIRESTOREdb", "mutableListOf: $goodsList")
+        return goodsList
     }
 }

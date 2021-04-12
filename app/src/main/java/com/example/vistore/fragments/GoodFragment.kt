@@ -22,7 +22,11 @@ class GoodFragment : Fragment(R.layout.fragment_good) {
     private lateinit var binding: FragmentGoodBinding
     private val viewModel by viewModels<GoodViewModel>()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         binding = FragmentGoodBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -43,7 +47,7 @@ class GoodFragment : Fragment(R.layout.fragment_good) {
         checkIsGoodAlreadyInBasket()
     }
 
-    fun showGoodData(){
+    fun showGoodData() {
         binding.goodImage.load(GoodObject.image_link)
         binding.tvGoodBrand.text = GoodObject.brand.toUpperCase()
         binding.tvGoodName.text = GoodObject.name
@@ -53,43 +57,47 @@ class GoodFragment : Fragment(R.layout.fragment_good) {
     }
 
 
-    fun observeViewModel(){
+    fun observeViewModel() {
         viewModel.isGoodInBasketLiveData.observe(viewLifecycleOwner, Observer { goodInBasket ->
             //Log.d("FIRESTOREdb", "VIEW:   isGoodInBasket = $goodInBasket")
             // show button DELETE
-            if (goodInBasket){
-               // Log.d("FIRESTOREdb", "VIEW TRUE:   isGoodInBasket = $goodInBasket")
+            if (goodInBasket) {
+                // Log.d("FIRESTOREdb", "VIEW TRUE:   isGoodInBasket = $goodInBasket")
                 binding.btnAddToBasket.visibility = View.INVISIBLE
                 binding.btnDeleteFromBasket.visibility = View.VISIBLE
             }
             // show button ADD
             else {
-              //  Log.d("FIRESTOREdb", "VIEW FALSE:   isGoodInBasket = $goodInBasket")
+                //  Log.d("FIRESTOREdb", "VIEW FALSE:   isGoodInBasket = $goodInBasket")
                 binding.btnAddToBasket.visibility = View.VISIBLE
                 binding.btnDeleteFromBasket.visibility = View.INVISIBLE
             }
         })
     }
 
-    fun setUpOnClickListeners(){
+    fun setUpOnClickListeners() {
 
-            // btn ADD TO BASKET
-            binding.btnAddToBasket.setOnClickListener {
-                if (Firebase.auth.currentUser != null){
-                    viewModel.addToBasket()
-                } else { showToast("You don't have an account. Register!")}
+        // btn ADD TO BASKET
+        binding.btnAddToBasket.setOnClickListener {
+            if (Firebase.auth.currentUser != null) {
+                viewModel.addToBasket()
+                showToast("Saved successfully!")
+            } else {
+                showToast("You don't have an account. Register!")
             }
+        }
 
-            // btn DELETE FROM BASKET
-            binding.btnDeleteFromBasket.setOnClickListener {
-                if (Firebase.auth.currentUser != null){
+        // btn DELETE FROM BASKET
+        binding.btnDeleteFromBasket.setOnClickListener {
+            if (Firebase.auth.currentUser != null) {
+                showToast("Deleted successfully")
                 viewModel.deleteFromBasket()
             }
         }
     }
 
-    fun checkIsGoodAlreadyInBasket(){
-        if (Firebase.auth.currentUser != null){
+    fun checkIsGoodAlreadyInBasket() {
+        if (Firebase.auth.currentUser != null) {
             viewModel.checkIsGoodAlreadyInBasket()
         }
     }

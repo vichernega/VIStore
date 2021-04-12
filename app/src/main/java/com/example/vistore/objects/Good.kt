@@ -13,5 +13,10 @@ data class Good(
     val description: String,
     val category: String,
     val product_type: String,
+    val amount_basket: String,
+    val value_basket: String
     /*val product_colors: List<String>*/
-)
+){
+    constructor(): this("", "", "", "", "", "",
+        "", "", "", "", "")
+}

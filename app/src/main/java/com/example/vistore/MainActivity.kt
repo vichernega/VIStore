@@ -1,20 +1,19 @@
 package com.example.vistore
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.example.vistore.databinding.ActivityMainBinding
 import com.example.vistore.fragments.*
 import com.example.vistore.objects.FirebaseObject
 import com.example.vistore.objects.User
 import com.example.vistore.utilits.APP_ACTIVITY
-import com.example.vistore.utilits.replaceFragment
 import com.example.vistore.utilits.replaceFragmentWithNoBackStack
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
 class MainActivity : AppCompatActivity() {
@@ -43,9 +42,24 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.ic_home -> replaceFragmentWithNoBackStack(HomeFragment())
                 R.id.ic_menu -> replaceFragmentWithNoBackStack(MenuFragment())
-                R.id.ic_basket -> replaceFragmentWithNoBackStack(BasketFragment())
-                R.id.ic_my_account -> if (Firebase.auth.currentUser != null) replaceFragmentWithNoBackStack(ProfileFragment())
-                                        else replaceFragmentWithNoBackStack(EmptyUserProfileFragment())
+
+                // if user null --> EmptyBasketFragment
+                R.id.ic_basket -> lifecycleScope.launch {
+                    if (Firebase.auth.currentUser == null) replaceFragmentWithNoBackStack(
+                        EmptyBasketFragment()
+                    )
+                    //if user not null but basket is empty --> EmptyBasketFragment
+                    else if (FirebaseObject.checkIsBasketEmpty()) replaceFragmentWithNoBackStack(
+                        EmptyBasketFragment()
+                    )
+                    // if user not null and basket is not empty --> BasketFragment
+                    else replaceFragmentWithNoBackStack(BasketFragment())
+                }
+
+
+                        R.id.ic_my_account -> if (Firebase.auth.currentUser != null) replaceFragmentWithNoBackStack(ProfileFragment())
+                else replaceFragmentWithNoBackStack(EmptyUserProfileFragment())
+
 
             }
             true

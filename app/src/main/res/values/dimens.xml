@@ -14,6 +14,8 @@
     <dimen name="iconSize">26dp</dimen>
     <dimen name="separator_height">0.5dp</dimen>
 
+    <dimen name="imageButtonSmallSize">20dp</dimen>
+
 
     <!--MARGINS-->
 
