@@ -6,7 +6,9 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.tasks.await
 
 object FirebaseObject {
 
@@ -15,6 +17,7 @@ object FirebaseObject {
 
     const val COLLECTION_USERS = "users"
     const val COLLECTION_USERS_BASKET = "users basket"
+    const val COLLECTION_USERS_ORDERS = "users_orders"
 
 
     fun saveUserInDB(user: User) {
@@ -72,6 +75,25 @@ object FirebaseObject {
             }
     }
 
+    fun clearUsersBasket(){
+
+        firestore.collection(COLLECTION_USERS).document(Firebase.auth.currentUser.uid)
+            .collection(COLLECTION_USERS_BASKET)
+            .get()
+            .addOnSuccessListener {
+                for (document in it){
+                    firestore.collection(COLLECTION_USERS).document(Firebase.auth.currentUser.uid)
+                        .collection(COLLECTION_USERS_BASKET).document(document.id)
+                        .delete()
+                }
+                Log.d("FIRESTOREdb", "GOOD SUCCESSFULLY DELETED FROM USERS_BASKET")
+            }
+            .addOnFailureListener {
+                Log.d("FIRESTOREdb", "FAILURE. GOOD IS NOT DELETED FROM USERS_BASKET")
+                showToast("Failure")
+            }
+    }
+
 
     suspend fun checkIsGoodAlreadyInBasket(): Boolean{
         var isGoodInBasket = false
@@ -90,7 +112,7 @@ object FirebaseObject {
             .addOnFailureListener {
                 Log.d("FIRESTOREdb", "FAILURE IN IS GOOD EXISTS FUN")
             }
-        delay(600)
+            .await()
         return isGoodInBasket  // true if good is in DB
     }
 
@@ -111,7 +133,7 @@ object FirebaseObject {
             .addOnFailureListener {
                 Log.d("FIRESTOREdb", "FAILURE IN IS GOOD EXISTS FUN")
             }
-        delay(600)
+            .await()
         return isBasketEmpty  // true if good is in DB
     }
 
@@ -127,8 +149,19 @@ object FirebaseObject {
                 Log.d("FIRESTOREdb", "RETRIEVED FROM BASKET GOODS LIST: $goodsList")
             }
             .addOnFailureListener { Log.d("FIRESTOREdb", "FAILURE IN RETRIEVE GOODS LIST BASKET FUN") }
-        delay(600)
+            .await()
         Log.d("FIRESTOREdb", "mutableListOf: $goodsList")
         return goodsList
+    }
+
+    fun saveOrderInDB(order: OrderObject){
+        firestore.collection(COLLECTION_USERS).document(Firebase.auth.currentUser.uid)
+            .collection(COLLECTION_USERS_ORDERS).document(order.orderId)
+            .set(order)
+            .addOnSuccessListener {
+                clearUsersBasket()      // after successful order --> clear basket
+                Log.d("FIRESTOREdb", "ORDER IS SAVED IN DB")
+            }
+            .addOnFailureListener { Log.d("FIRESTOREdb", "FAILURE!!!. ORDER IS NOT SAVED IN DB") }
     }
 }

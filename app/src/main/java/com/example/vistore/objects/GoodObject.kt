@@ -28,15 +28,20 @@ object GoodObject {
         good.product_type?.let { product_type = it }
     }
 
+    fun addToBasket(){
+        amount_basket = "1"
+        value_basket = price
+    }
+
     fun addOneMoreInBasket(){
         amount_basket = (amount_basket.toInt() + 1).toString()
-        value_basket = (amount_basket.toInt() * price.toFloat()).toString()
+        value_basket = "%.2f".format(amount_basket.toInt() * price.toDouble())
     }
 
     fun deleteOneFromBasket(){
         if (amount_basket.toInt() > 1){
             amount_basket = (amount_basket.toInt() - 1).toString()
-            value_basket = (amount_basket.toInt() * price.toFloat()).toString()
+            value_basket = (amount_basket.toInt() * price.toDouble()).toString()
         } else showToast("Can't order less than 1 item!")
     }
 

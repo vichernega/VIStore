@@ -4,11 +4,6 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.vistore.api.ApiBuilder
 import com.example.vistore.objects.Good
-import com.example.vistore.objects.GoodsResponse
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.lang.Exception
 
 class HomeRepository {
 
@@ -27,7 +22,7 @@ class HomeRepository {
         try {
 
             val response = ApiBuilder.retrofitService.getProductsHome(headers)
-            _responseListLivaData.value = response
+            _responseListLivaData.postValue(response)
 
             Log.d("RESPONSE", response.toString())
             Log.d("RESPONSE", response.size.toString())
@@ -36,6 +31,7 @@ class HomeRepository {
             Log.d("RESPONSE", e.message.toString())
         }
     }
+
 }
 
 

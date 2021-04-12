@@ -16,9 +16,8 @@ class GoodRepository {
     }
 
     suspend fun addToBasket(){
-        GoodObject.addOneMoreInBasket()
+        GoodObject.addToBasket()
         FirebaseObject.saveGoodInUsersBasket(GoodObject)
-        showToast("Deleted successfully")
         checkIsGoodAlreadyInBasket()
     }
 

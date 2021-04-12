@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.vistore.objects.Good
 import com.example.vistore.objects.GoodObject
 import com.example.vistore.repositories.BasketRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class BasketViewModel : ViewModel() {
@@ -14,7 +15,7 @@ class BasketViewModel : ViewModel() {
     private var _basketGoodsList = repo.basketGoodsList
 
     fun retrieveGoodsListFromBasket() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             repo.retrieveGoodsListFromBasket()
         }
     }

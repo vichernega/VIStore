@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.OrderFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_order_information"
+            style="@style/HeadingText"
+            android:layout_marginTop="@dimen/larger_margin"
+            android:text="@string/order_information"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--TOTAL VALUE-->
+        <TextView
+            android:id="@+id/tv_total"
+            style="@style/HomeRecyclerViewBoldText"
+            android:layout_marginTop="@dimen/middle_margin"
+            android:layout_marginEnd="@dimen/small_margin"
+            android:text="@string/total_colon"
+            app:layout_constraintEnd_toStartOf="@+id/tv_order_total_value"
+            app:layout_constraintTop_toBottomOf="@+id/tv_order_information" />
+
+        <TextView
+            android:id="@+id/tv_order_total_value"
+            style="@style/HomeRecyclerViewBoldText"
+            android:layout_marginTop="@dimen/middle_margin"
+            android:layout_marginEnd="@dimen/large_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_order_information"
+            tools:text="256$" />
+
+        <!--NAME-->
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/MiddleSizeText"
+            android:layout_marginTop="@dimen/large_margin"
+            android:text="@string/name_colon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_total" />
+
+        <EditText
+            android:id="@+id/et_name"
+            style="@style/SmallEditText"
+            android:layout_marginTop="18dp"
+            android:hint="@string/name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_total"
+            tools:text="Victoria" />
+
+
+        <!--SURNAME-->
+        <TextView
+            android:id="@+id/tv_surname"
+            style="@style/MiddleSizeText"
+            android:hint="@string/surname"
+            android:text="@string/surname_colon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+        <EditText
+            android:id="@+id/et_surname"
+            style="@style/SmallEditText"
+            android:hint="@string/surname"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_name" />
+
+        <!--COUNTRY-->
+        <TextView
+            android:id="@+id/tv_country"
+            style="@style/MiddleSizeText"
+            android:text="@string/country_colon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_surname" />
+
+        <EditText
+            android:id="@+id/et_country"
+            style="@style/SmallEditText"
+            android:hint="@string/country"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_surname" />
+
+        <!--TOWN-->
+        <TextView
+            android:id="@+id/tv_town"
+            style="@style/MiddleSizeText"
+            android:text="@string/town_colon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_country" />
+
+        <EditText
+            android:id="@+id/et_town"
+            style="@style/SmallEditText"
+            android:hint="@string/town"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_country" />
+
+        <!--ADDRESS-->
+        <TextView
+            android:id="@+id/tv_address"
+            style="@style/MiddleSizeText"
+            android:text="@string/address_colon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_town" />
+
+        <EditText
+            android:id="@+id/et_address"
+            style="@style/SmallEditText"
+            android:hint="@string/address"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_town" />
+
+        <!--DELIVERY-->
+        <TextView
+            android:id="@+id/tv_delivery_type"
+            style="@style/MiddleSizeText"
+            android:layout_marginTop="@dimen/after_heading_large_margin"
+            android:text="@string/delivery_type_colon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_address" />
+
+        <RadioGroup
+            android:id="@+id/rg_delivery_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_delivery_type">
+
+            <RadioButton
+                android:id="@+id/rb_delivery_man"
+                style="@style/MiddleSizeText"
+                android:buttonTint="@color/colorBrown"
+                android:layout_marginStart="@dimen/after_heading_large_margin"
+                android:layout_marginTop="@dimen/recycler_view_normal_margin"
+                android:text="@string/delivery_man" />
+
+            <RadioButton
+                android:id="@+id/rb_post_office"
+                style="@style/MiddleSizeText"
+                android:buttonTint="@color/colorBrown"
+                android:layout_marginStart="@dimen/after_heading_large_margin"
+                android:layout_marginTop="0dp"
+                android:text="@string/post_office" />
+
+        </RadioGroup>
+
+        <!--PAYMENT-->
+        <TextView
+            android:id="@+id/tv_payment_type"
+            style="@style/MiddleSizeText"
+            android:layout_marginTop="@dimen/small_margin"
+            android:text="@string/payment_colon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rg_delivery_type" />
+
+        <RadioGroup
+            android:id="@+id/rg_payment_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_payment_type">
+
+            <RadioButton
+                android:id="@+id/rb_credit_card"
+                style="@style/MiddleSizeText"
+                android:buttonTint="@color/colorBrown"
+                android:layout_marginStart="@dimen/after_heading_large_margin"
+                android:layout_marginTop="@dimen/recycler_view_normal_margin"
+                android:text="@string/credit_card" />
+
+            <RadioButton
+                android:id="@+id/rb_cash"
+                style="@style/MiddleSizeText"
+                android:buttonTint="@color/colorBrown"
+                android:layout_marginStart="@dimen/after_heading_large_margin"
+                android:layout_marginTop="0dp"
+                android:text="@string/cash" />
+
+        </RadioGroup>
+
+        <!--Error text-->
+        <TextView
+            android:id="@+id/error_message"
+            style="@style/ErrorText"
+            android:visibility="invisible"
+            android:text="@string/error_fill_in_all_of_the_fields"
+            app:layout_constraintTop_toBottomOf="@+id/rg_payment_type"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!--BUTTON-->
+        <Button
+            android:id="@+id/btn_confirm"
+            style="@style/ClassicButton"
+            android:layout_marginTop="@dimen/after_heading_margin"
+            android:text="@string/confirm"
+            app:layout_constraintTop_toBottomOf="@+id/rg_payment_type"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

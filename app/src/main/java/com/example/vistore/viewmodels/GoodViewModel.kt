@@ -22,13 +22,13 @@ class GoodViewModel: ViewModel() {
     }
 
     fun addToBasket(){
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             repo.addToBasket()
         }
     }
 
     fun deleteFromBasket(){
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             repo.deleteFromBasket()
         }
     }

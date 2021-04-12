@@ -36,7 +36,7 @@ class BasketFragment : Fragment(R.layout.fragment_basket) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.retrieveGoodsListFromBasket()
         observeViewModel()
-        //setUpClickListeners()
+        setUpClickListeners()
     }
 
     fun observeViewModel(){
@@ -50,7 +50,7 @@ class BasketFragment : Fragment(R.layout.fragment_basket) {
         binding.basketRecyclerView.adapter = recyclerViewAdapter
     }
 
-/*    fun setUpClickListeners(){
+    fun setUpClickListeners(){
         binding.btnOrder.setOnClickListener { replaceFragment(OrderFragment()) }
-    }*/
+    }
 }
