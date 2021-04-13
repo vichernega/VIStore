@@ -17,15 +17,15 @@ object GoodObject {
     var value_basket: String = ""
 
     fun set(good: Good){
-        good.goodId?.let { goodId = it }
-        good.brand?.let { brand = it }
-        good.name?.let { name = it }
-        good.price?.let { price = it }
-        good.price_sign?.let { price_sign = it }
-        good.image_link?.let { image_link = it }
-        good.description?.let { description = it }
-        good.category?.let { category = it }
-        good.product_type?.let { product_type = it }
+        good.goodId.let { goodId = it }
+        good.brand.let { brand = it }
+        good.name.let { name = it }
+        good.price.let { price = it }
+        good.price_sign.let { price_sign = it }
+        good.image_link.let { image_link = it }
+        good.description.let { description = it }
+        good.category.let { category = it }
+        good.product_type.let { product_type = it }
     }
 
     fun addToBasket(){

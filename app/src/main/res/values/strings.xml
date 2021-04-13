@@ -43,4 +43,5 @@
     <string name="payment_colon">Payment:</string>
     <string name="credit_card">Credit card</string>
     <string name="cash">Cash</string>
+    <string name="choose_category_colon">Choose category:</string>
 </resources>

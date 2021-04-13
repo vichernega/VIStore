@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.vistore.api.ApiBuilder
 import com.example.vistore.objects.Good
+import com.example.vistore.utilits.HEADERS
 
 class HomeRepository {
 
@@ -13,15 +14,10 @@ class HomeRepository {
 
     suspend fun getProducts() {
 
-        // values for api key and host
-        val headers = HashMap<String, String>()
-        headers.put("x-rapidapi-key", "3e7abad104mshab610049e8e18d7p16ff5fjsn5e4dbb01f073")
-        headers.put("x-rapidapi-host", "makeup.p.rapidapi.com")
-
         // response - retrofit object that contains List<Good>
         try {
 
-            val response = ApiBuilder.retrofitService.getProductsHome(headers)
+            val response = ApiBuilder.retrofitService.getProductsHome(HEADERS)
             _responseListLivaData.postValue(response)
 
             Log.d("RESPONSE", response.toString())
@@ -35,8 +31,12 @@ class HomeRepository {
 }
 
 
+
+
+
 /*
-for not suspend fun that returns Call<List<Good>>
+// for not suspend fun that returns Call<List<Good>>
+
 val response = call.enqueue(object : Callback<List<Good>> {
 
     // returns Good objects

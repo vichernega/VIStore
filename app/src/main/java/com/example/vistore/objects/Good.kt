@@ -15,8 +15,9 @@ data class Good(
     val product_type: String,
     val amount_basket: String,
     val value_basket: String
-    /*val product_colors: List<String>*/
-){
-    constructor(): this("", "", "", "", "", "",
-        "", "", "", "", "")
+) {
+    constructor() : this(
+        "", "", "", "", "", "",
+        "", "", "", "", ""
+    )
 }
