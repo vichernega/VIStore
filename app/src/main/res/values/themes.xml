@@ -190,6 +190,16 @@
         <item name="android:layout_marginEnd">@dimen/normal_margin</item>
     </style>
 
+    <!--PROGRESS BAR-->
+
+    <style name="ProgressBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:indeterminate">true</item>
+        <item name="android:indeterminateTintMode">src_atop</item>
+        <item name="android:indeterminateTint">@color/colorLightBrown</item>
+    </style>
+
 
 
 </resources>

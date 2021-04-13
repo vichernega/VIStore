@@ -6,22 +6,21 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.vistore.databinding.CommonRecyclerViewItemBinding
 import com.example.vistore.fragments.GoodFragment
-import com.example.vistore.fragments.HomeFragment
 import com.example.vistore.objects.Good
 import com.example.vistore.objects.GoodObject
 import com.example.vistore.utilits.APP_ACTIVITY
 import com.example.vistore.utilits.replaceFragment
 
 /** ADAPTER gets the data, adapts it to recyclerView and shows to user*/
-class HomeRecyclerViewAdapter(private val productList: List<Good>) :
-    RecyclerView.Adapter<HomeRecyclerViewAdapter.HomeViewHolder>() {
+class CommonRecyclerViewAdapter(private val productList: List<Good>) :
+    RecyclerView.Adapter<CommonRecyclerViewAdapter.CommonViewHolder>() {
 
     /** initialize recycler item components*/
-    class HomeViewHolder(val binding: CommonRecyclerViewItemBinding) : RecyclerView.ViewHolder(binding.root)
+    class CommonViewHolder(val binding: CommonRecyclerViewItemBinding) : RecyclerView.ViewHolder(binding.root)
 
     /** inflates the recycler item to recycler view*/
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
-        return HomeViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommonViewHolder {
+        return CommonViewHolder(
             CommonRecyclerViewItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -29,7 +28,7 @@ class HomeRecyclerViewAdapter(private val productList: List<Good>) :
         )
     }
     /**sets data from productList to components in recyclerView_item*/
-    override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CommonViewHolder, position: Int) {
 
         // nullable value check (api returns null in some cases)
         productList[position].image_link?.let { holder.binding.productPhoto.load(it) }

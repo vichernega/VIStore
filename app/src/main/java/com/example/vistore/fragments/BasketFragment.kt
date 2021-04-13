@@ -9,15 +9,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.vistore.R
 import com.example.vistore.adapters.BasketRecyclerViewAdapter
-import com.example.vistore.adapters.HomeRecyclerViewAdapter
 import com.example.vistore.databinding.FragmentBasketBinding
-import com.example.vistore.databinding.FragmentGoodBinding
-import com.example.vistore.databinding.FragmentHomeBinding
 import com.example.vistore.objects.Good
-import com.example.vistore.objects.GoodObject
 import com.example.vistore.utilits.replaceFragment
 import com.example.vistore.viewmodels.BasketViewModel
-import com.example.vistore.viewmodels.HomeViewModel
 
 
 class BasketFragment : Fragment(R.layout.fragment_basket) {
