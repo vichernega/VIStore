@@ -14,7 +14,7 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
         setStatusBarParams()
 
-        //setting context to the APP_ACTIVITY
+        //setting context to the REGISTER_ACTIVITY
         REGISTER_ACTIVITY = this
 
         replaceFragment(RegisterOptionsFragment())

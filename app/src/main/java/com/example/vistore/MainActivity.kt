@@ -4,14 +4,17 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.example.vistore.actvities.AdministratorActivity
 import com.example.vistore.databinding.ActivityMainBinding
 import com.example.vistore.fragments.*
 import com.example.vistore.objects.FirebaseObject
 import com.example.vistore.objects.User
 import com.example.vistore.utilits.APP_ACTIVITY
+import com.example.vistore.utilits.replaceActivity
 import com.example.vistore.utilits.replaceFragmentWithNoBackStack
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -22,16 +25,24 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)       // binding initializing
         setContentView(binding.root)
 
         //setting context to the APP_ACTIVITY
         APP_ACTIVITY = this
 
-        User.checkUser()    // if user !null --> retrieve remote data
+        // replace activity if !null current user is admin
+        GlobalScope.launch(Dispatchers.Main) {                      // main thread because it is UI changes
+            if(FirebaseObject.isCurrentUserAdmin()){
+                APP_ACTIVITY.replaceActivity(AdministratorActivity())
+            } else {
+                replaceFragmentWithNoBackStack(HomeFragment())      // if mainActivity runs replace fragment
+            }
+        }
+
+        User.checkUser()    // if currentUser !null --> retrieve remote data (admin or user)
 
         setStatusBarParams()
-        replaceFragmentWithNoBackStack(HomeFragment())
     }
 
     override fun onStart() {

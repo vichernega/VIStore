@@ -6,8 +6,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.awaitAll
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.tasks.await
 
 object FirebaseObject {
@@ -15,15 +13,16 @@ object FirebaseObject {
 
     val firestore: FirebaseFirestore = Firebase.firestore
 
-    const val COLLECTION_USERS = "users"
-    const val COLLECTION_USERS_BASKET = "users basket"
-    const val COLLECTION_USERS_ORDERS = "users_orders"
+    private const val COLLECTION_USERS = "users"
+    private const val COLLECTION_ADMINS = "administrators"
+    private const val COLLECTION_USERS_BASKET = "users basket"
+    private const val COLLECTION_USERS_ORDERS = "users_orders"
 
 
     fun saveUserInDB(user: User) {
         firestore.collection(COLLECTION_USERS)
-            .document(Firebase.auth.currentUser.uid)
-            .set(user)
+            .document(Firebase.auth.currentUser.uid)                // creating document called User.uid in Firestore
+            .set(user)                                              // saving user info in document
             .addOnSuccessListener {
                 Log.d("FIRESTOREdb", "SAVED IN DB")
             }
@@ -33,19 +32,30 @@ object FirebaseObject {
     }
 
 
-    fun retrieveUserFromDB() {
+    suspend fun retrieveUserFromDB() {
         val uid = Firebase.auth.currentUser.uid
-        val remoteUser = firestore.collection(COLLECTION_USERS).document(uid)
-            .get()
-            .addOnSuccessListener {
-                User.receiveRemoteUser(it)
-                Log.d("FIRESTOREdb", "RETRIEVED FROM DB")
 
-            }
-            .addOnFailureListener {
-                Log.d("FIRESTOREdb", " FAILURE RETRIEVING FROM DB")
-            }
-        Log.d("FIRESTOREdb", remoteUser.toString())
+        // retrieve ADMIN info in local object
+        if (isCurrentUserAdmin()){
+            firestore.collection(COLLECTION_ADMINS).document(uid)
+                .get()                                              // get admin from DB Administrators collection
+                .addOnSuccessListener {
+                    Administrator.receiveRemoteAdmin(it)            // saving data to local admin object
+                    Log.d("FIRESTOREdb", "RETRIEVED FROM DB")
+                }
+                .addOnFailureListener { Log.d("FIRESTOREdb", " FAILURE RETRIEVING ADMIN FROM DB") }
+        }
+
+        // retrieve USER info in local object
+        else {
+           firestore.collection(COLLECTION_USERS).document(uid)
+                .get()                                              // get user from DB USERS collection
+                .addOnSuccessListener {
+                    User.receiveRemoteUser(it)                      // saving data to local user object
+                    Log.d("FIRESTOREdb", "RETRIEVED FROM DB")
+                }
+                .addOnFailureListener { Log.d("FIRESTOREdb", " FAILURE RETRIEVING USER FROM DB") }
+        }
 
     }
 
@@ -112,7 +122,7 @@ object FirebaseObject {
             .addOnFailureListener {
                 Log.d("FIRESTOREdb", "FAILURE IN IS GOOD EXISTS FUN")
             }
-            .await()
+            .await()            // wait for query finished
         return isGoodInBasket  // true if good is in DB
     }
 
@@ -133,7 +143,7 @@ object FirebaseObject {
             .addOnFailureListener {
                 Log.d("FIRESTOREdb", "FAILURE IN IS GOOD EXISTS FUN")
             }
-            .await()
+            .await()          // wait for query finished
         return isBasketEmpty  // true if good is in DB
     }
 
@@ -149,19 +159,40 @@ object FirebaseObject {
                 Log.d("FIRESTOREdb", "RETRIEVED FROM BASKET GOODS LIST: $goodsList")
             }
             .addOnFailureListener { Log.d("FIRESTOREdb", "FAILURE IN RETRIEVE GOODS LIST BASKET FUN") }
-            .await()
+            .await()                                                    // wait for query finished
         Log.d("FIRESTOREdb", "mutableListOf: $goodsList")
         return goodsList
     }
 
     fun saveOrderInDB(order: OrderObject){
         firestore.collection(COLLECTION_USERS).document(Firebase.auth.currentUser.uid)
-            .collection(COLLECTION_USERS_ORDERS).document(order.orderId)
-            .set(order)
+            .collection(COLLECTION_USERS_ORDERS).document(order.orderId)                // creating document called orderId
+            .set(order)                                                                 // save order in document
             .addOnSuccessListener {
-                clearUsersBasket()      // after successful order --> clear basket
+                clearUsersBasket()                   // after successful order --> clear basket
                 Log.d("FIRESTOREdb", "ORDER IS SAVED IN DB")
             }
             .addOnFailureListener { Log.d("FIRESTOREdb", "FAILURE!!!. ORDER IS NOT SAVED IN DB") }
+    }
+
+
+    //admin check. returns true if current user is admin
+    suspend fun isCurrentUserAdmin(): Boolean{
+        var isAdmin: Boolean = false
+        val currentUserUid = Firebase.auth.currentUser.uid
+        if (currentUserUid != null){
+            firestore.collection(COLLECTION_ADMINS).get()       // get admin querySnapshot
+                .addOnSuccessListener {
+                    for (adminUid in it){
+                        if (adminUid.id == currentUserUid){     // current user == remote admin
+                            isAdmin = true
+                        }
+                        Log.d("FIREBASEdb", adminUid.id)
+                    }
+                }
+                .addOnFailureListener { Log.d("FIREBASEdb", "FAIL") }
+                .await()        // wait for query finished
+        }
+        return isAdmin
     }
 }

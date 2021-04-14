@@ -7,6 +7,9 @@ import com.example.vistore.utilits.showToast
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class RegisterRepository {
 
@@ -39,7 +42,10 @@ class RegisterRepository {
                     showToast("Success")
 
                     _userMutableLiveData.value = Firebase.auth.currentUser      // change liveData
-                    FirebaseObject.retrieveUserFromDB()                         // retrieve remote data to local user
+
+                    GlobalScope.launch(Dispatchers.IO) {                        //coroutine because retrieveUserFromDB is suspend function
+                        FirebaseObject.retrieveUserFromDB()                     // retrieve remote data to local user
+                    }
 
                 } else {
                     showToast("Incorrect data")
