@@ -1,74 +1,13 @@
 package com.example.vistore.objects
 
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.ktx.toObject
-import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-
-object User {
-
-    var id: String = ""
-    var name: String = ""
-    var surname: String = ""
-    var email: String = ""
-    var country: String = ""
-    var town: String = ""
-    var address: String = ""
-
-
-    fun saveSignUpData(name: String, surname: String, email: String){
-        id = Firebase.auth.currentUser.uid
-        this.name = name
-        this.surname = surname
-        this.email = email
-    }
-
-    fun saveData(name: String, surname: String, country: String, town: String, address: String){
-        this.name = name
-        this.surname = surname
-        this.country = country
-        this.town = town
-        this.address = address
-    }
-
-    // converting and setting remote user data in local object
-    fun receiveRemoteUser(documentShapshot: DocumentSnapshot) {
-        val remoteUser = documentShapshot.toObject<User>()
-        if (remoteUser != null) {
-            setUser(remoteUser)
-        }
-    }
-
-    // for retrieving user data on app launching
-    fun checkUser(){
-        if (Firebase.auth.currentUser != null){
-            GlobalScope.launch(Dispatchers.IO) {
-                FirebaseObject.retrieveUserFromDB()     // suspend
-            }
-        }
-    }
-
-    fun setUser(user: User){
-        id = user.id
-        name = user.name
-        surname = user.surname
-        email = user.email
-        country = user.country
-        town = user.town
-        address = user.address
-    }
-
-    fun clear(){
-        id = ""
-        name = ""
-        surname = ""
-        email = ""
-        country = ""
-        town = ""
-        address = ""
-    }
-
+data class User(
+    val id: String,
+    val name: String,
+    val surname: String,
+    val email: String,
+    val country: String,
+    val town: String,
+    val address: String
+){
+    constructor() : this("", "", "", "",  "", "",  "")
 }

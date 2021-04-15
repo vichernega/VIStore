@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.vistore.R
 import com.example.vistore.databinding.FragmentProfileBinding
-import com.example.vistore.objects.User
+import com.example.vistore.objects.UserObject
 import com.example.vistore.utilits.APP_ACTIVITY
 import com.example.vistore.utilits.replaceFragment
 import com.google.firebase.auth.ktx.auth
@@ -49,14 +49,14 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         //on Log Out click
         binding.logoutContainer.setOnClickListener {
             Firebase.auth.signOut()
-            User.clear()
+            UserObject.clear()
             replaceFragment(EmptyUserProfileFragment())
         }
     }
 
     // show user data in fragment Text Views (name + surname, email)
     fun showUserData(){
-        binding.tvUserFullname.text = User.name + " " + User.surname
-        binding.tvUserEmail.text = User.email
+        binding.tvUserFullname.text = UserObject.name + " " + UserObject.surname
+        binding.tvUserEmail.text = UserObject.email
     }
 }

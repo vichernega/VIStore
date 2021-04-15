@@ -21,7 +21,7 @@ object GoodObject {
         good.brand.let { brand = it }
         good.name.let { name = it }
         good.price.let { price = it }
-        good.price_sign.let { price_sign = it }
+        good.price_sign?.let { price_sign = it }
         good.image_link.let { image_link = it }
         good.description.let { description = it }
         good.category.let { category = it }

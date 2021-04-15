@@ -2,7 +2,7 @@ package com.example.vistore.repositories
 
 import androidx.lifecycle.MutableLiveData
 import com.example.vistore.objects.FirebaseObject
-import com.example.vistore.objects.User
+import com.example.vistore.objects.UserObject
 import com.example.vistore.utilits.showToast
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -25,7 +25,7 @@ class RegisterRepository {
                     showToast("Success")
 
                     _userMutableLiveData.value = Firebase.auth.currentUser      //change liveData
-                    FirebaseObject.saveUserInDB(User)                           // Save user data in firestore
+                    FirebaseObject.saveUserInDB(UserObject)                           // Save user data in firestore
 
                 } else {
                     showToast("The user is already exists")

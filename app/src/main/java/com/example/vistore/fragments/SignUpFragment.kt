@@ -11,7 +11,7 @@ import androidx.lifecycle.Observer
 import com.example.vistore.R
 import com.example.vistore.databinding.FragmentSignUpBinding
 import com.example.vistore.viewmodels.SignUpViewModel
-import com.example.vistore.objects.User
+import com.example.vistore.objects.UserObject
 import com.example.vistore.utilits.*
 
 class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
@@ -41,7 +41,7 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
                 REGISTER_ACTIVITY.replaceActivity(APP_ACTIVITY)
 
                 //saving data in USER object
-                User.saveSignUpData(binding.etSignUpName.text.toString().trim { it <= ' ' },
+                UserObject.saveSignUpData(binding.etSignUpName.text.toString().trim { it <= ' ' },
                     binding.etSignUpSurname.text.toString().trim { it <= ' ' },
                     binding.etSignUpEmail.text.toString().trim { it <= ' ' })
             }

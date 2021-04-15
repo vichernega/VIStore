@@ -8,14 +8,12 @@ import com.example.vistore.actvities.AdministratorActivity
 import com.example.vistore.databinding.ActivityMainBinding
 import com.example.vistore.fragments.*
 import com.example.vistore.objects.FirebaseObject
-import com.example.vistore.objects.User
+import com.example.vistore.objects.UserObject
 import com.example.vistore.utilits.APP_ACTIVITY
 import com.example.vistore.utilits.replaceActivity
 import com.example.vistore.utilits.replaceFragmentWithNoBackStack
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 
@@ -31,16 +29,16 @@ class MainActivity : AppCompatActivity() {
         //setting context to the APP_ACTIVITY
         APP_ACTIVITY = this
 
+        UserObject.checkUser()    // if currentUser !null --> retrieve remote data (admin or user)
+
         // replace activity if !null current user is admin
-        GlobalScope.launch(Dispatchers.Main) {                      // main thread because it is UI changes
+        lifecycleScope.launch {                      // lifecycleScope - destroys after activity is destroyed
             if(FirebaseObject.isCurrentUserAdmin()){
                 APP_ACTIVITY.replaceActivity(AdministratorActivity())
             } else {
                 replaceFragmentWithNoBackStack(HomeFragment())      // if mainActivity runs replace fragment
             }
         }
-
-        User.checkUser()    // if currentUser !null --> retrieve remote data (admin or user)
 
         setStatusBarParams()
     }
@@ -55,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.ic_menu -> replaceFragmentWithNoBackStack(MenuFragment())
 
                 // if user null --> EmptyBasketFragment
-                R.id.ic_basket -> lifecycleScope.launch {
+                R.id.ic_basket -> lifecycleScope.launch {                      // lifecycleScope - destroys after activity is destroyed
                     if (Firebase.auth.currentUser == null) replaceFragmentWithNoBackStack(
                         EmptyBasketFragment()
                     )

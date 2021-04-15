@@ -17,7 +17,7 @@ data class Good(
     val value_basket: String
 ) {
     constructor() : this(
-        "", "", "", "", "", "",
+        "", "", "", "", "$", "",
         "", "", "", "", ""
     )
 }

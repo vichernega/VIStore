@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import com.example.vistore.R
 import com.example.vistore.databinding.FragmentOrderBinding
 import com.example.vistore.objects.OrderObject
-import com.example.vistore.objects.User
+import com.example.vistore.objects.UserObject
 import com.example.vistore.utilits.APP_ACTIVITY
 import com.example.vistore.utilits.replaceFragment
 import com.example.vistore.viewmodels.OrderViewModel
@@ -43,11 +43,11 @@ class OrderFragment : Fragment(R.layout.fragment_order) {
     }
 
     private fun setUserInfoInEditTexts(){
-        binding.etName.setText(User.name)
-        binding.etSurname.setText(User.surname)
-        binding.etCountry.setText(User.country)
-        binding.etTown.setText(User.town)
-        binding.etAddress.setText(User.address)
+        binding.etName.setText(UserObject.name)
+        binding.etSurname.setText(UserObject.surname)
+        binding.etCountry.setText(UserObject.country)
+        binding.etTown.setText(UserObject.town)
+        binding.etAddress.setText(UserObject.address)
     }
 
     private fun setUpClickListeners(){

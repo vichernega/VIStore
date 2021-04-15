@@ -12,10 +12,15 @@ object Administrator {
         email = admin.email
     }
 
-    fun receiveRemoteAdmin(documentShapshot: DocumentSnapshot){
-        val remoteAdmin = documentShapshot.toObject<Administrator>()     // convert data from DB to Admin object
+    fun receiveRemoteAdmin(documentSnapshot: DocumentSnapshot){
+        val remoteAdmin = documentSnapshot.toObject<Administrator>()     // convert data from DB to Admin object
         if (remoteAdmin != null) {
             set(remoteAdmin)                                             // set data to Admin Object
         }
+    }
+
+    fun clear(){
+        id = ""
+        email = ""
     }
 }
