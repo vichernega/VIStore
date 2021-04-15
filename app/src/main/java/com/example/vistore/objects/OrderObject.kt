@@ -29,6 +29,10 @@ object OrderObject {
     var creditCard: String = "false"
     var cash: String = "false"
 
+    // status
+    var isConfirmed: String = "false"       // true after admin confirming
+    var isReceived: String = "false"        // true after user receiving
+
 
     fun setUserInfo(userName: String, userSurname: String, userCountry: String, userTown: String, userAddress: String){
         this.userName = userName
@@ -70,5 +74,23 @@ object OrderObject {
     fun chooseCash(){
         creditCard = "false"
         cash = "true"
+    }
+
+    fun setOrder(order: Order){
+        orderId = order.orderId
+        userId = order.userId
+        userName = order.userName
+        userSurname = order.userSurname
+        userCountry = order.userCountry
+        userTown = order.userTown
+        userAddress = order.userAddress
+        goodsList = order.goodsList
+        totalValue = order.totalValue
+        deliveryMan = order.deliveryMan
+        postOffice = order.postOffice
+        creditCard = order.creditCard
+        cash = order.cash
+        isConfirmed = order.isConfirmed
+        isReceived = order.isReceived
     }
 }

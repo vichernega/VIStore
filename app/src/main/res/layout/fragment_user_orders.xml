@@ -4,26 +4,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.UsersFragment">
+    tools:context=".fragments.UserOrdersFragment">
 
     <TextView
         android:id="@+id/tv_orders"
         style="@style/HeadingText"
-        android:text="@string/users"
+        android:text="@string/orders"
         android:layout_marginTop="@dimen/small_margin"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <TextView
+        style="@style/NormalText"
+        android:text="@string/empty"
+        android:id="@+id/tv_empty"
+        android:textColor="@color/colorLightBrown"
+        android:visibility="invisible"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/users_recycler_view"
+        android:id="@+id/user_orders_recycler_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/recycler_view_normal_margin"
         app:flow_horizontalAlign="center"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/users_recycler_view_item"
+        tools:listitem="@layout/user_orders_recycler_view_item"
         app:layout_constraintTop_toBottomOf="@+id/tv_orders"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

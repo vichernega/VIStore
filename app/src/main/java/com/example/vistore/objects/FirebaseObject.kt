@@ -169,12 +169,27 @@ object FirebaseObject {
         firestore.collection(COLLECTION_USERS).document(Firebase.auth.currentUser.uid)
             .collection(COLLECTION_USERS_ORDERS)    // path
             .document(order.orderId)                // creating document called orderId
-            .set(order)                                                                 // save order in document
+            .set(order)                             // save order in document
             .addOnSuccessListener {
                 clearUsersBasket()                   // after successful order --> clear basket
                 Log.d("FIRESTOREdb", "ORDER IS SAVED IN DB")
             }
             .addOnFailureListener { Log.d("FIRESTOREdb", "FAILURE!!!. ORDER IS NOT SAVED IN DB") }
+    }
+
+    suspend fun retrieveUserOrdersList(uid: String): List<Order>{
+        var orderList: MutableList<Order> = mutableListOf()
+        firestore.collection(COLLECTION_USERS).document(uid)
+            .collection(COLLECTION_USERS_ORDERS)
+            .get()
+            .addOnSuccessListener {
+                for (order in it){
+                    orderList.add(order.toObject(Order::class.java))
+                }
+            }
+            .addOnFailureListener { Log.d("FIRESTOREdb", "FAILURE!!!. ORDER LIST IS NOT RETRIEVED FROM DB") }
+            .await()
+        return orderList
     }
 
 

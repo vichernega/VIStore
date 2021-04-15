@@ -4,7 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vistore.databinding.UsersRecyclerViewItemBinding
+import com.example.vistore.fragments.UserOrdersFragment
 import com.example.vistore.objects.User
+import com.example.vistore.utilits.ADMINISTRATOR_ACTIVITY
+import com.example.vistore.utilits.replaceFragment
 
 /** ADAPTER gets the data, adapts it to recyclerView and shows to user*/
 class UsersRecyclerViewAdapter(private val usersList: List<User>): RecyclerView.Adapter<UsersRecyclerViewAdapter.UsersViewHolder>() {
@@ -31,7 +34,7 @@ class UsersRecyclerViewAdapter(private val usersList: List<User>): RecyclerView.
 
         // on user click
         holder.binding.usersRecyclerViewItem.setOnClickListener {
-            //ADMINISTRATOR_ACTIVITY.replaceFragment(UserOrdersFragment())
+            ADMINISTRATOR_ACTIVITY.replaceFragment(UserOrdersFragment(usersList[position].id))
         }
 
     }
