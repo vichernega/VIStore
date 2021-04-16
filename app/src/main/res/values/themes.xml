@@ -76,6 +76,18 @@
 
     </style>
 
+
+    <style name="MiddleSizeDarkText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/larger_margin</item>
+        <item name="android:layout_marginStart">@dimen/large_margin</item>
+        <item name="android:textColor">@color/colorDarkBrown</item>
+        <item name="android:textSize">@dimen/middleSizeText</item>
+        <item name="android:fontFamily">@font/century_gothic</item>
+
+    </style>
+
     <style name="SmallSizeText">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -108,6 +120,18 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/colorDarkBrown</item>
         <item name="android:textSize">@dimen/headingText</item>
+        <item name="android:fontFamily">@font/century_gothic</item>
+
+    </style>
+
+    <style name="StatusText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">1dp</item>
+        <item name="android:paddingStart">@dimen/large_margin</item>
+        <item name="android:paddingEnd">@dimen/large_margin</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">@dimen/smallText</item>
         <item name="android:fontFamily">@font/century_gothic</item>
 
     </style>

@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vistore.databinding.UserOrdersRecyclerViewItemBinding
+import com.example.vistore.fragments.OrderInfoFragment
 import com.example.vistore.objects.Order
 import com.example.vistore.objects.OrderObject
 import com.example.vistore.utilits.ADMINISTRATOR_ACTIVITY
@@ -36,7 +37,7 @@ class UserOrdersRecyclerViewAdapter(private val orderList: List<Order>):
         // on order click
         holder.binding.userOrdersRecyclerViewItem.setOnClickListener {
             OrderObject.setOrder(orderList[position])
-            //ADMINISTRATOR_ACTIVITY.replaceFragment(OrderFragment)
+            ADMINISTRATOR_ACTIVITY.replaceFragment(OrderInfoFragment())
         }
     }
 

@@ -46,6 +46,6 @@ class BasketFragment : Fragment(R.layout.fragment_basket) {
     }
 
     fun setUpClickListeners(){
-        binding.btnOrder.setOnClickListener { replaceFragment(OrderFragment()) }
+        binding.btnOrder.setOnClickListener { replaceFragment(MakeOrderFragment()) }
     }
 }

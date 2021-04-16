@@ -46,4 +46,8 @@
     <string name="choose_category_colon">Choose category:</string>
     <string name="users">Users</string>
     <string name="empty">Empty</string>
+    <string name="details">Details</string>
+    <string name="order_id_colon">Order ID:</string>
+    <string name="delivery_colon">Delivery:</string>
+    <string name="x_mark">✕</string>
 </resources>

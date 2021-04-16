@@ -2,7 +2,6 @@ package com.example.vistore.objects
 
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import okhttp3.internal.addHeaderLenient
 import java.util.*
 
 object OrderObject {
@@ -34,7 +33,13 @@ object OrderObject {
     var isReceived: String = "false"        // true after user receiving
 
 
-    fun setUserInfo(userName: String, userSurname: String, userCountry: String, userTown: String, userAddress: String){
+    fun setUserInfo(
+        userName: String,
+        userSurname: String,
+        userCountry: String,
+        userTown: String,
+        userAddress: String
+    ) {
         this.userName = userName
         this.userSurname = userSurname
         this.userCountry = userCountry
@@ -42,41 +47,76 @@ object OrderObject {
         this.userAddress = userAddress
     }
 
-    fun updateOrderGoodInfo(list: List<Good>){
+    fun updateOrderGoodInfo(list: List<Good>) {
         goodsList = list
         var count: Double = 0.0
-        for (good in list){
+        for (good in list) {
             count += good.value_basket.toDouble()
         }
         totalValue = "%.2f".format(count)   // round total value
     }
 
-    fun generateIds(){
+    fun generateIds() {
         orderId = UUID.randomUUID().toString()
         userId = Firebase.auth.currentUser.uid
     }
 
-    fun chooseDeliveryMan(){
+    fun setStatusInfo(){
+        isConfirmed = "false"
+        isReceived = "false"
+    }
+
+    fun chooseDeliveryMan() {
         deliveryMan = "true"
         postOffice = "false"
     }
 
-    fun choosePostOffice(){
+    fun choosePostOffice() {
         deliveryMan = "false"
         postOffice = "true"
     }
 
-    fun chooseCreditCard(){
+    fun chooseCreditCard() {
         creditCard = "true"
         cash = "false"
     }
 
-    fun chooseCash(){
+    fun chooseCash() {
         creditCard = "false"
         cash = "true"
     }
 
-    fun setOrder(order: Order){
+    fun checkDelivery(): String {
+        if (deliveryMan.toBoolean()) {
+            return "Delivery man"
+        } else {
+            return "Post office"
+        }
+    }
+
+    fun checkPayment(): String {
+        if (creditCard.toBoolean()) {
+            return "Credit card"
+        } else {
+            return "Cash"
+        }
+    }
+
+    fun checkIsConfirmed(): Boolean {         // true if confirmed
+/*        Log.d("STATUSfff", isConfirmed)                                           BUG - always return false
+        Log.d("STATUSfff", "BOOL before setting:   ${isConfirmed.toBoolean()}")
+        isConfirmed = "true"
+        Log.d("STATUSfff", "BOOL after setting:   ${isConfirmed.toBoolean()}")*/
+        return isConfirmed.toBoolean()
+    }
+
+    fun checkIsReceived(): Boolean {         // true if received
+/*        Log.d("STATUSfff", isReceived)                                            BUG - always return false
+        Log.d("STATUSfff", "BOOL:   ${isReceived.toBoolean()}")*/
+        return isReceived.toBoolean()
+    }
+
+    fun setOrder(order: Order) {
         orderId = order.orderId
         userId = order.userId
         userName = order.userName
@@ -92,5 +132,10 @@ object OrderObject {
         cash = order.cash
         isConfirmed = order.isConfirmed
         isReceived = order.isReceived
+
+/*        Log.d("STATUSfff", "order.isConfirmed:   ${order.isConfirmed}")
+        Log.d("STATUSfff", "order.isConfirmed bool:   ${order.isConfirmed.toBoolean()}")
+        Log.d("STATUSfff", "order.isReceived:   ${order.isReceived}")
+        Log.d("STATUSfff", "order.isReceived bool:   ${order.isReceived.toBoolean()}")*/
     }
 }

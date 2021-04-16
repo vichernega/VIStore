@@ -8,21 +8,21 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.vistore.R
-import com.example.vistore.databinding.FragmentOrderBinding
+import com.example.vistore.databinding.FragmentMakeOrderBinding
 import com.example.vistore.objects.OrderObject
 import com.example.vistore.objects.UserObject
 import com.example.vistore.utilits.APP_ACTIVITY
 import com.example.vistore.utilits.replaceFragment
-import com.example.vistore.viewmodels.OrderViewModel
+import com.example.vistore.viewmodels.MakeOrderViewModel
 
 
-class OrderFragment : Fragment(R.layout.fragment_order) {
+class MakeOrderFragment : Fragment(R.layout.fragment_make_order) {
 
-    private lateinit var binding: FragmentOrderBinding
-    private val viewModel by viewModels<OrderViewModel>()
+    private lateinit var binding: FragmentMakeOrderBinding
+    private val viewModel by viewModels<MakeOrderViewModel>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentOrderBinding.inflate(layoutInflater, container, false)
+        binding = FragmentMakeOrderBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 

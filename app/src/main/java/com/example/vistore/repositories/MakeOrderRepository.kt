@@ -6,7 +6,7 @@ import com.example.vistore.objects.Good
 import com.example.vistore.objects.OrderObject
 import com.example.vistore.utilits.showToast
 
-class OrderRepository {
+class MakeOrderRepository {
 
     private var _orderTotalValueLiveData: MutableLiveData<String> = MutableLiveData()
 
@@ -22,7 +22,6 @@ class OrderRepository {
         FirebaseObject.saveOrderInDB(OrderObject)
         showToast("Order confirmed")
     }
-
 
     val orderTotalValueLiveData: MutableLiveData<String> get() = _orderTotalValueLiveData
 
