@@ -6,6 +6,9 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
 object FirebaseObject {
@@ -14,10 +17,10 @@ object FirebaseObject {
     val firestore: FirebaseFirestore = Firebase.firestore
 
     // collection names
-    private const val COLLECTION_USERS = "users"
-    private const val COLLECTION_ADMINS = "administrators"
-    private const val COLLECTION_USERS_BASKET = "users basket"
-    private const val COLLECTION_USERS_ORDERS = "users_orders"
+    const val COLLECTION_USERS = "users"
+    const val COLLECTION_ADMINS = "administrators"
+    const val COLLECTION_USERS_BASKET = "users basket"
+    const val COLLECTION_USERS_ORDERS = "users_orders"
 
 
     /**Save local users in remote database*/
@@ -165,11 +168,11 @@ object FirebaseObject {
     }
 
     /**Save order info (user data and goods in basket) in remote database*/
-    fun saveOrderInDB(order: OrderObject) {
-        firestore.collection(COLLECTION_USERS).document(Firebase.auth.currentUser.uid)
+    fun saveOrderInDB(userId: String) {
+        firestore.collection(COLLECTION_USERS).document(userId)
             .collection(COLLECTION_USERS_ORDERS)    // path
-            .document(order.orderId)                // creating document called orderId
-            .set(order)                             // save order in document
+            .document(OrderObject.orderId)                // creating document called orderId
+            .set(OrderObject)                             // save order in document
             .addOnSuccessListener {
                 clearUsersBasket()                   // after successful order --> clear basket
                 Log.d("FIRESTOREdb", "ORDER IS SAVED IN DB")

@@ -29,8 +29,8 @@ object OrderObject {
     var cash: String = "false"
 
     // status
-    var isConfirmed: String = "false"       // true after admin confirming
-    var isReceived: String = "false"        // true after user receiving
+    var confirmed: String = "false"       // true after admin confirming
+    var received: String = "false"        // true after user receiving
 
 
     fun setUserInfo(
@@ -62,8 +62,8 @@ object OrderObject {
     }
 
     fun setStatusInfo(){
-        isConfirmed = "false"
-        isReceived = "false"
+        confirmed = "false"
+        received = "false"
     }
 
     fun chooseDeliveryMan() {
@@ -103,17 +103,19 @@ object OrderObject {
     }
 
     fun checkIsConfirmed(): Boolean {         // true if confirmed
-/*        Log.d("STATUSfff", isConfirmed)                                           BUG - always return false
-        Log.d("STATUSfff", "BOOL before setting:   ${isConfirmed.toBoolean()}")
-        isConfirmed = "true"
-        Log.d("STATUSfff", "BOOL after setting:   ${isConfirmed.toBoolean()}")*/
-        return isConfirmed.toBoolean()
+        return confirmed.toBoolean()
     }
 
     fun checkIsReceived(): Boolean {         // true if received
-/*        Log.d("STATUSfff", isReceived)                                            BUG - always return false
-        Log.d("STATUSfff", "BOOL:   ${isReceived.toBoolean()}")*/
-        return isReceived.toBoolean()
+        return received.toBoolean()
+    }
+
+    fun confirm(){
+        confirmed = "true"
+    }
+
+    fun receive(){
+        received = "true"
     }
 
     fun setOrder(order: Order) {
@@ -130,12 +132,7 @@ object OrderObject {
         postOffice = order.postOffice
         creditCard = order.creditCard
         cash = order.cash
-        isConfirmed = order.isConfirmed
-        isReceived = order.isReceived
-
-/*        Log.d("STATUSfff", "order.isConfirmed:   ${order.isConfirmed}")
-        Log.d("STATUSfff", "order.isConfirmed bool:   ${order.isConfirmed.toBoolean()}")
-        Log.d("STATUSfff", "order.isReceived:   ${order.isReceived}")
-        Log.d("STATUSfff", "order.isReceived bool:   ${order.isReceived.toBoolean()}")*/
+        confirmed = order.confirmed
+        received = order.received
     }
 }

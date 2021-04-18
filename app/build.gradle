@@ -86,4 +86,9 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.4.3'   //await func
 
+    // pdf
+    //implementation 'com.itextpdf:itext7-core:7.1.11'
+    implementation 'com.itextpdf:itextg:5.5.10'
+
+
 }

@@ -2,28 +2,44 @@ package com.example.vistore.fragments
 
 import android.content.res.ColorStateList
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.vistore.R
 import com.example.vistore.adapters.OrderGoodRecyclerViewAdapter
-import com.example.vistore.databinding.FragmentOrderInfoBinding
+import com.example.vistore.databinding.FragmentConfirmOrderBinding
 import com.example.vistore.objects.OrderObject
+import com.example.vistore.utilits.showToast
+import com.example.vistore.viewmodels.ConfirmOrderViewModel
 
-class OrderInfoFragment : Fragment(R.layout.fragment_order_info) {
 
-    private lateinit var binding: FragmentOrderInfoBinding
+// this fragment must use OrderGoodRecyclerViewAdapter (for products) and settings from OrderInfoFragment
+class ConfirmOrderFragment : Fragment(R.layout.fragment_confirm_order) {
+
+    private lateinit var binding: FragmentConfirmOrderBinding
+    private val viewModel by viewModels<ConfirmOrderViewModel>()
     private lateinit var recyclerViewAdapter: OrderGoodRecyclerViewAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentOrderInfoBinding.inflate(layoutInflater, container, false)
+        binding = FragmentConfirmOrderBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         setOrderInfo()
+        setUpClickListeners()
+    }
+
+    fun setUpClickListeners(){
+        binding.btnConfirm.setOnClickListener {
+            viewModel.confirm()
+            binding.btnConfirm.visibility = View.GONE
+            showToast("Confirmed")
+        }
     }
 
     fun setOrderInfo(){
@@ -37,7 +53,6 @@ class OrderInfoFragment : Fragment(R.layout.fragment_order_info) {
         binding.tvDeliveryVal.text = OrderObject.checkDelivery()
         binding.tvPaymentVal.text = OrderObject.checkPayment()
 
-        /** BUG */
         // set confirm status appearance
         if (OrderObject.checkIsConfirmed()){
             binding.tvConfirmed.text = "Confirmed"
@@ -57,12 +72,12 @@ class OrderInfoFragment : Fragment(R.layout.fragment_order_info) {
         }
 
         // good list in recycler view
-        initRecyclerView()
+        initRecyclerViewAdapter()
 
         binding.tvOrderTotalValue.text = OrderObject.totalValue
     }
 
-    fun initRecyclerView(){
+    fun initRecyclerViewAdapter(){
         recyclerViewAdapter = OrderGoodRecyclerViewAdapter(OrderObject.goodsList)
         binding.goodListRecyclerView.adapter = recyclerViewAdapter
     }

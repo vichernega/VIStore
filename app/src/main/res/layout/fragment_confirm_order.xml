@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.ConfirmOrderFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_details"
+            style="@style/HeadingText"
+            android:layout_marginTop="@dimen/middle_margin"
+            android:text="@string/details"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--FULL NAME-->
+        <TextView
+            android:id="@+id/tv_order_id"
+            style="@style/MiddleSizeDarkText"
+            android:layout_marginTop="@dimen/large_margin"
+            android:text="@string/order_id_colon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_details" />
+
+        <TextView
+            android:id="@+id/tv_order_id_val"
+            style="@style/NormalText"
+            android:textColor="@color/colorDarkBrown"
+            android:textSize="13sp"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="32dp"
+            tools:text="55e4962a-d38b-4024-a9ef-3836a0afd0bb"
+            app:layout_constraintTop_toBottomOf="@+id/tv_details"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!--FULL NAME-->
+        <TextView
+            android:id="@+id/tv_full_name"
+            style="@style/MiddleSizeText"
+            android:layout_marginTop="@dimen/middle_margin"
+            android:text="@string/name_colon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_order_id" />
+
+        <TextView
+            android:id="@+id/tv_full_name_val"
+            style="@style/MiddleSizeText"
+            android:layout_marginTop="@dimen/middle_margin"
+            android:layout_marginStart="120dp"
+            tools:text="Victoria Chernega"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_order_id" />
+
+        <!--COUNTRY-->
+        <TextView
+            android:id="@+id/tv_country"
+            style="@style/MiddleSizeText"
+            android:layout_marginTop="@dimen/middle_margin"
+            android:text="@string/country_colon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_full_name" />
+
+        <TextView
+            android:id="@+id/tv_country_val"
+            style="@style/MiddleSizeText"
+            android:layout_marginTop="@dimen/middle_margin"
+            android:layout_marginStart="120dp"
+            tools:text="Ukraine"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_full_name" />
+
+        <!--TOWN-->
+        <TextView
+            android:id="@+id/tv_town"
+            style="@style/MiddleSizeText"
+            android:layout_marginTop="@dimen/middle_margin"
+            android:text="@string/town_colon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_country" />
+
+        <TextView
+            android:id="@+id/tv_town_val"
+            style="@style/MiddleSizeText"
+            android:layout_marginTop="@dimen/middle_margin"
+            android:layout_marginStart="120dp"
+            tools:text="Vinnytsia"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_country" />
+
+        <!--ADDRESS-->
+        <TextView
+            android:id="@+id/tv_address"
+            style="@style/MiddleSizeText"
+            android:layout_marginTop="@dimen/middle_margin"
+            android:text="@string/address_colon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_town" />
+
+        <TextView
+            android:id="@+id/tv_address_val"
+            style="@style/MiddleSizeText"
+            android:layout_marginTop="@dimen/middle_margin"
+            android:layout_marginStart="120dp"
+            tools:text="Kelecka 83"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_town" />
+
+        <!--DELIVERY-->
+        <TextView
+            android:id="@+id/tv_delivery"
+            style="@style/MiddleSizeText"
+            android:layout_marginTop="@dimen/middle_margin"
+            android:text="@string/delivery_colon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_address" />
+
+        <TextView
+            android:id="@+id/tv_delivery_val"
+            style="@style/MiddleSizeText"
+            android:layout_marginTop="@dimen/middle_margin"
+            android:layout_marginStart="120dp"
+            tools:text="Delivery man"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_address" />
+
+        <!--PAYMENT-->
+        <TextView
+            android:id="@+id/tv_payment"
+            style="@style/MiddleSizeText"
+            android:layout_marginTop="@dimen/middle_margin"
+            android:text="@string/payment_colon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_delivery" />
+
+        <TextView
+            android:id="@+id/tv_payment_val"
+            style="@style/MiddleSizeText"
+            android:layout_marginTop="@dimen/middle_margin"
+            android:layout_marginStart="120dp"
+            tools:text="Credit card"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_delivery" />
+
+        <!--STATUS IS CONFIRMED-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/confirm_status"
+            android:layout_marginStart="@dimen/large_margin"
+            android:layout_marginTop="@dimen/middle_margin"
+            android:background="@drawable/text_view_background"
+            app:layout_constraintTop_toBottomOf="@id/tv_payment"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/tv_confirmed"
+                style="@style/StatusText"
+                android:text="Confirmed"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!--STATUS IS RECEIVED-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/receive_status"
+            android:layout_marginStart="@dimen/recycler_view_normal_margin"
+            android:layout_marginTop="@dimen/middle_margin"
+            android:background="@drawable/text_view_background"
+            android:backgroundTint="@color/colorDarkBrown"
+            app:layout_constraintTop_toBottomOf="@id/tv_payment"
+            app:layout_constraintStart_toEndOf="@+id/confirm_status">
+
+            <TextView
+                android:id="@+id/tv_received"
+                style="@style/StatusText"
+                android:text="Not recieved"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            style="@style/Separator"
+            android:layout_marginTop="@dimen/middle_margin"
+            app:layout_constraintTop_toBottomOf="@id/confirm_status"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!--RECYCLER VIEW-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/good_list_recycler_view"
+            app:flow_horizontalAlign="center"
+            android:layout_marginTop="@dimen/large_margin"
+            android:layout_marginBottom="@dimen/large_margin"
+            tools:listitem="@layout/order_recycler_view_item"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/confirm_status"/>
+
+        <!--TOTAL VALUE-->
+        <TextView
+            android:id="@+id/tv_total"
+            style="@style/HomeRecyclerViewBoldText"
+            android:layout_marginEnd="@dimen/small_margin"
+            android:layout_marginTop="@dimen/large_margin"
+            android:text="@string/total_colon"
+            app:layout_constraintEnd_toStartOf="@+id/tv_order_total_value"
+            app:layout_constraintTop_toBottomOf="@id/good_list_recycler_view"/>
+
+        <TextView
+            android:id="@+id/tv_order_total_value"
+            style="@style/HomeRecyclerViewBoldText"
+            android:layout_marginEnd="@dimen/large_margin"
+            android:layout_marginTop="@dimen/large_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/good_list_recycler_view"
+            tools:text="256$" />
+
+        <Button
+            android:id="@+id/btn_confirm"
+            style="@style/ClassicButton"
+            android:text="Confirm"
+            android:layout_marginTop="@dimen/after_heading_large_margin"
+            android:layout_marginBottom="@dimen/middle_margin"
+            app:layout_constraintTop_toBottomOf="@id/good_list_recycler_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

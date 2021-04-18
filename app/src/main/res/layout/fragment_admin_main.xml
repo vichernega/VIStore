@@ -46,12 +46,43 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+    <!--ORDERS ELEMENT-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/orders_container"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/small_container_height"
+        app:layout_constraintTop_toBottomOf="@+id/users_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/icon_orders"
+            style="@style/IconSmall"
+            android:src="@drawable/ic_bnb_basket"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            style="@style/NormalTextInContainer"
+            android:text="@string/orders"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/icon_orders"/>
+
+        <View
+            style="@style/Separator"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <!-- LOG OUT ELEMENT-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/logout_container"
         android:layout_width="match_parent"
         android:layout_height="@dimen/small_container_height"
-        app:layout_constraintTop_toBottomOf="@+id/users_container"
+        app:layout_constraintTop_toBottomOf="@+id/orders_container"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 

@@ -44,7 +44,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         binding.personalInformationContainer.setOnClickListener { replaceFragment(ChangeUserInfoFragment()) }
 
         //on orders click
-        binding.ordersContainer.setOnClickListener { /*replaceFragment(ShowOrders())*/ }
+        binding.ordersContainer.setOnClickListener { replaceFragment(CurrentUserOrdersFragment()) }
 
         //on Log Out click
         binding.logoutContainer.setOnClickListener {

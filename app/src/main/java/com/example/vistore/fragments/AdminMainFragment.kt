@@ -34,6 +34,9 @@ class AdminMainFragment : Fragment(R.layout.fragment_admin_main) {
         // on Users click
         binding.usersContainer.setOnClickListener { replaceFragment(UsersFragment()) }
 
+        // on Orders click
+        binding.ordersContainer.setOnClickListener { replaceFragment(OrdersToConfirmFragment()) }
+
         //on Log Out click
         binding.logoutContainer.setOnClickListener {
             Firebase.auth.signOut()                         // log out

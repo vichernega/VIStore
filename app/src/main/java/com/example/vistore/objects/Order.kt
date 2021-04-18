@@ -24,8 +24,8 @@ data class Order(
     val cash: String,
 
     // status
-    val isConfirmed: String,       // true after admin confirming
-    val isReceived: String         // true after user receiving
+    val confirmed: String,       // true after admin confirming
+    val received: String         // true after user receiving
 ){
     constructor() : this("", "", "", "", "", "", "",
         listOf(), "",  "", "", "", "", "", "", )

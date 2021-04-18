@@ -5,6 +5,8 @@ import com.example.vistore.objects.FirebaseObject
 import com.example.vistore.objects.Good
 import com.example.vistore.objects.OrderObject
 import com.example.vistore.utilits.showToast
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class MakeOrderRepository {
 
@@ -19,7 +21,7 @@ class MakeOrderRepository {
 
     fun saveOrder(){
         OrderObject.generateIds()
-        FirebaseObject.saveOrderInDB(OrderObject)
+        FirebaseObject.saveOrderInDB(Firebase.auth.currentUser.uid)
         showToast("Order confirmed")
     }
 
