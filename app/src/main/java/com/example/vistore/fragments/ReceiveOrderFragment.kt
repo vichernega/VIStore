@@ -14,6 +14,7 @@ import com.example.vistore.adapters.OrderGoodRecyclerViewAdapter
 import com.example.vistore.databinding.FragmentReceiveOrderBinding
 import com.example.vistore.objects.OrderObject
 import com.example.vistore.utilits.APP_ACTIVITY
+import com.example.vistore.utilits.PERMISSION_CODE
 import com.example.vistore.utilits.showToast
 import com.example.vistore.viewmodels.ReceiveOrderViewModel
 import java.util.jar.Manifest
@@ -54,7 +55,7 @@ class ReceiveOrderFragment : Fragment(R.layout.fragment_receive_order) {
                 if (APP_ACTIVITY.checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     == PackageManager.PERMISSION_DENIED){
                     val permissions = arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                    APP_ACTIVITY.requestPermissions(permissions, 100)
+                    APP_ACTIVITY.requestPermissions(permissions, PERMISSION_CODE)
 
                 } else {            // permission already granted
                     viewModel.savePdf()
@@ -63,12 +64,11 @@ class ReceiveOrderFragment : Fragment(R.layout.fragment_receive_order) {
                 viewModel.savePdf()
             }
         }
-
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         when(requestCode){
-            100 -> {
+            PERMISSION_CODE -> {
                 if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){      // permission granted
                     viewModel.savePdf()
                 } else { showToast("Permission denied") }       // permission denied, show error

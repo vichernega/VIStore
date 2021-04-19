@@ -38,6 +38,7 @@ class ConfirmOrderFragment : Fragment(R.layout.fragment_confirm_order) {
         binding.btnConfirm.setOnClickListener {
             viewModel.confirm()
             binding.btnConfirm.visibility = View.GONE
+            setOrderInfo()
             showToast("Confirmed")
         }
     }

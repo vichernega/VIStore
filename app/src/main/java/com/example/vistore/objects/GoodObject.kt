@@ -5,7 +5,7 @@ import com.example.vistore.utilits.showToast
 object GoodObject {
 
     var goodId: String = ""
-    var brand: String = ""
+    var brand: String = "NO NAME"
     var name: String = ""
     var price: String = ""
     var price_sign: String = "$"
@@ -18,14 +18,14 @@ object GoodObject {
 
     fun set(good: Good){
         good.goodId.let { goodId = it }
-        good.brand.let { brand = it }
-        good.name.let { name = it }
-        good.price.let { price = it }
+        good.brand?.let { brand = it }
+        good.name?.let { name = it }
+        good.price?.let { price = it }
         good.price_sign?.let { price_sign = it }
-        good.image_link.let { image_link = it }
-        good.description.let { description = it }
-        good.category.let { category = it }
-        good.product_type.let { product_type = it }
+        good.image_link?.let { image_link = it }
+        good.description?.let { description = it }
+        good.category?.let { category = it }
+        good.product_type?.let { product_type = it }
     }
 
     fun addToBasket(){
